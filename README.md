@@ -9,6 +9,5 @@
 В зависимости от погоды меняются ее иконки(облачно, ясно, мелкий или большой дождик и т.д)
 
 Функционал представлен в GIF:
-<a href="https://ibb.co/7btGy5M"><img src="https://i.ibb.co/DLf7Kyc/Weather-App.gif" alt="Weather-App" border="0"></a>
-
+![hippo](https://media.giphy.com/media/L46hP3YNgGG3L0k1Gi/giphy.gif)
 
