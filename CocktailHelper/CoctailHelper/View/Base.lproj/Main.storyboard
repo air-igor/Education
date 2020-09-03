@@ -83,11 +83,46 @@
                     <connections>
                         <outlet property="coctailSearchSearchBar" destination="63v-dc-POe" id="HWd-Vx-HZy"/>
                         <outlet property="coctailSearchTableView" destination="0og-gv-pv4" id="HvD-xd-wwd"/>
+                        <segue destination="yb0-ag-vF0" kind="showDetail" identifier="showMore" id="DPi-7e-baw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9uo-kx-zU9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="369.56521739130437" y="738.61607142857144"/>
+        </scene>
+        <!--Detail Search View Controller-->
+        <scene sceneID="g07-Or-VJE">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="yb0-ag-vF0" customClass="DetailSearchViewController" customModule="CoctailHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nbd-D6-A3S">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ceY-1v-wtk">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="yb0-ag-vF0" id="3jc-4B-UJj"/>
+                                    <outlet property="delegate" destination="yb0-ag-vF0" id="7i0-YA-lwX"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ceY-1v-wtk" firstAttribute="trailing" secondItem="dOy-LW-Kgm" secondAttribute="trailing" id="KmY-SO-s0C"/>
+                            <constraint firstItem="ceY-1v-wtk" firstAttribute="leading" secondItem="dOy-LW-Kgm" secondAttribute="leading" id="bzF-Pb-BpH"/>
+                            <constraint firstItem="ceY-1v-wtk" firstAttribute="top" secondItem="dOy-LW-Kgm" secondAttribute="top" id="gtb-j7-WRU"/>
+                            <constraint firstAttribute="bottom" secondItem="ceY-1v-wtk" secondAttribute="bottom" id="tA0-BG-yQg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dOy-LW-Kgm"/>
+                    </view>
+                    <connections>
+                        <outlet property="cocktailTable" destination="ceY-1v-wtk" id="hAh-ci-nOc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w3k-Mm-QSK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1082.608695652174" y="738.61607142857144"/>
         </scene>
         <!--Detail Random View Controller-->
         <scene sceneID="p7a-BW-krQ">

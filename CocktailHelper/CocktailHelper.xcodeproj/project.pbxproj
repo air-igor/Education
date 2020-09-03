@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32283D1025003A03001ED185 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32283D0E25003A03001ED185 /* CustomTableViewCell.swift */; };
+		32283D1125003A03001ED185 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32283D0F25003A03001ED185 /* CustomTableViewCell.xib */; };
+		32283D17250049CF001ED185 /* DetailSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32283D16250049CF001ED185 /* DetailSearchViewController.swift */; };
+		32283D1A25005783001ED185 /* CustomTableViewCellTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32283D1825005783001ED185 /* CustomTableViewCellTwo.swift */; };
+		32283D1B25005783001ED185 /* CustomTableViewCellTwo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32283D1925005783001ED185 /* CustomTableViewCellTwo.xib */; };
+		32283D1E25005854001ED185 /* CustomTableViewCellThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32283D1C25005854001ED185 /* CustomTableViewCellThree.swift */; };
+		32283D1F25005854001ED185 /* CustomTableViewCellThree.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32283D1D25005854001ED185 /* CustomTableViewCellThree.xib */; };
 		323B432224FAD5990076D074 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323B432124FAD5990076D074 /* AppDelegate.swift */; };
 		323B432424FAD5990076D074 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323B432324FAD5990076D074 /* SceneDelegate.swift */; };
 		323B432924FAD5990076D074 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 323B432724FAD5990076D074 /* Main.storyboard */; };
@@ -22,6 +29,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32283D0E25003A03001ED185 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		32283D0F25003A03001ED185 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
+		32283D16250049CF001ED185 /* DetailSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSearchViewController.swift; sourceTree = "<group>"; };
+		32283D1825005783001ED185 /* CustomTableViewCellTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCellTwo.swift; sourceTree = "<group>"; };
+		32283D1925005783001ED185 /* CustomTableViewCellTwo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCellTwo.xib; sourceTree = "<group>"; };
+		32283D1C25005854001ED185 /* CustomTableViewCellThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCellThree.swift; sourceTree = "<group>"; };
+		32283D1D25005854001ED185 /* CustomTableViewCellThree.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCellThree.xib; sourceTree = "<group>"; };
 		323B431E24FAD5990076D074 /* CoctailHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoctailHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		323B432124FAD5990076D074 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		323B432324FAD5990076D074 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +110,13 @@
 				323B433A24FADC7E0076D074 /* MainTableViewController.swift */,
 				32F65EB924FD020E0061F4D2 /* DetailRandomViewController.swift */,
 				32F65EC224FD6C990061F4D2 /* SearchCoctailViewController.swift */,
+				32283D16250049CF001ED185 /* DetailSearchViewController.swift */,
+				32283D0E25003A03001ED185 /* CustomTableViewCell.swift */,
+				32283D0F25003A03001ED185 /* CustomTableViewCell.xib */,
+				32283D1825005783001ED185 /* CustomTableViewCellTwo.swift */,
+				32283D1925005783001ED185 /* CustomTableViewCellTwo.xib */,
+				32283D1C25005854001ED185 /* CustomTableViewCellThree.swift */,
+				32283D1D25005854001ED185 /* CustomTableViewCellThree.xib */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -184,8 +205,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				323B432E24FAD59A0076D074 /* LaunchScreen.storyboard in Resources */,
+				32283D1F25005854001ED185 /* CustomTableViewCellThree.xib in Resources */,
 				323B432B24FAD59A0076D074 /* Assets.xcassets in Resources */,
+				32283D1125003A03001ED185 /* CustomTableViewCell.xib in Resources */,
 				323B432924FAD5990076D074 /* Main.storyboard in Resources */,
+				32283D1B25005783001ED185 /* CustomTableViewCellTwo.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,11 +220,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32283D17250049CF001ED185 /* DetailSearchViewController.swift in Sources */,
 				32F65EC324FD6C990061F4D2 /* SearchCoctailViewController.swift in Sources */,
+				32283D1025003A03001ED185 /* CustomTableViewCell.swift in Sources */,
 				323B433724FAD6240076D074 /* CoctailNetworkManager.swift in Sources */,
 				323B433924FAD8440076D074 /* CoctailListData.swift in Sources */,
 				32F65EBA24FD020E0061F4D2 /* DetailRandomViewController.swift in Sources */,
 				323B432224FAD5990076D074 /* AppDelegate.swift in Sources */,
+				32283D1A25005783001ED185 /* CustomTableViewCellTwo.swift in Sources */,
+				32283D1E25005854001ED185 /* CustomTableViewCellThree.swift in Sources */,
 				32F65EC624FD7BCB0061F4D2 /* ApiConstants.swift in Sources */,
 				323B433B24FADC7E0076D074 /* MainTableViewController.swift in Sources */,
 				32F65EC124FD3E790061F4D2 /* UIImageView+DownloadImage.swift in Sources */,
