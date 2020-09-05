@@ -9,38 +9,34 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CustomTableViewCell" customModule="CoctailHelper" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomTableViewCell" rowHeight="152" id="KGk-i7-Jjw" customClass="CustomTableViewCell" customModule="CoctailHelper" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="152"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="152"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Cocktail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTr-gZ-SEL">
-                        <rect key="frame" x="125" y="37" width="133" height="26"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rWt-ha-3jI">
+                        <rect key="frame" x="30" y="11" width="130" height="130"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="oTr-gZ-SEL" secondAttribute="height" multiplier="133:26" id="JI7-U6-Kob"/>
+                            <constraint firstAttribute="width" constant="130" id="SU8-YW-db4"/>
+                            <constraint firstAttribute="height" constant="130" id="irt-0B-1e0"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Cocktail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oTr-gZ-SEL">
+                        <rect key="frame" x="168" y="61.5" width="136" height="29"/>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rWt-ha-3jI">
-                        <rect key="frame" x="8" y="0.0" width="109" height="100"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="rWt-ha-3jI" secondAttribute="height" multiplier="109:100" id="d43-4K-KqZ"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="rWt-ha-3jI" secondAttribute="bottom" id="0XM-ZZ-gSq"/>
-                    <constraint firstItem="oTr-gZ-SEL" firstAttribute="centerY" secondItem="rWt-ha-3jI" secondAttribute="centerY" id="34S-tP-Ba7"/>
-                    <constraint firstItem="rWt-ha-3jI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Fdw-iR-Mfi"/>
-                    <constraint firstAttribute="bottom" secondItem="oTr-gZ-SEL" secondAttribute="bottom" constant="37" id="K3S-Fa-VIx"/>
-                    <constraint firstItem="oTr-gZ-SEL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="37" id="Q9h-5Z-ZkH"/>
-                    <constraint firstAttribute="trailing" secondItem="oTr-gZ-SEL" secondAttribute="trailing" constant="8" id="fAp-5M-lW2"/>
-                    <constraint firstItem="rWt-ha-3jI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="lL5-3m-tBV"/>
-                    <constraint firstItem="oTr-gZ-SEL" firstAttribute="leading" secondItem="rWt-ha-3jI" secondAttribute="trailing" constant="8" id="vdl-kT-yJZ"/>
+                    <constraint firstAttribute="bottom" secondItem="rWt-ha-3jI" secondAttribute="bottom" constant="11" id="8bT-uT-x6K"/>
+                    <constraint firstItem="rWt-ha-3jI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="EEQ-yq-2my"/>
+                    <constraint firstItem="rWt-ha-3jI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="W2y-IW-dLq"/>
+                    <constraint firstItem="oTr-gZ-SEL" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="ZJB-n1-bsa"/>
+                    <constraint firstItem="oTr-gZ-SEL" firstAttribute="centerY" secondItem="rWt-ha-3jI" secondAttribute="centerY" id="Zxx-3T-1N2"/>
+                    <constraint firstItem="oTr-gZ-SEL" firstAttribute="leading" secondItem="rWt-ha-3jI" secondAttribute="trailing" constant="8" id="iaF-Bj-dEZ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -48,7 +44,7 @@
                 <outlet property="imageCocktail" destination="rWt-ha-3jI" id="PIA-n8-ST8"/>
                 <outlet property="nameCocktail" destination="oTr-gZ-SEL" id="Ioi-El-Lgz"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="107.8125"/>
+            <point key="canvasLocation" x="137.68115942028987" y="90.401785714285708"/>
         </tableViewCell>
     </objects>
 </document>

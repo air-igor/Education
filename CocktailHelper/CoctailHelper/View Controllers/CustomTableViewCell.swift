@@ -12,15 +12,24 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var imageCocktail: UIImageView!
     @IBOutlet weak var nameCocktail: UILabel!
     
+    static let indetifier = "CustomTableViewCell"
+    var coctail: Drinks?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        imageBounds()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
+    
+    func imageBounds() {
+        imageCocktail.clipsToBounds = true
+        imageCocktail.layer.cornerRadius = imageCocktail.frame.height / 2
+        imageCocktail.contentMode = .scaleAspectFill
+    }
+    
     
 }

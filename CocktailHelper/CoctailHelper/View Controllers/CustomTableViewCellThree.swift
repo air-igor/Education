@@ -11,6 +11,9 @@ import UIKit
 class CustomTableViewCellThree: UITableViewCell {
     @IBOutlet weak var instructionsLbl: UILabel!
     
+    static let indetifier = "CustomTableViewCellThree"
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -22,7 +22,6 @@ class DetailRandomViewController: UIViewController {
         
         
         nameCoctail.text = coctail?.strDrink
-        instructionsCoctail.text = coctail?.strInstructions
 
         guard let urlImageString = coctail?.strDrinkThumb else { return }
         let url = urlImageString

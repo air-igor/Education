@@ -11,9 +11,13 @@ import UIKit
 class CustomTableViewCellTwo: UITableViewCell {
     @IBOutlet weak var ingredientsLbl: UILabel!
     
+    static let indetifier = "CustomTableViewCellTwo"
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+    
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -23,3 +27,5 @@ class CustomTableViewCellTwo: UITableViewCell {
     }
     
 }
+
+

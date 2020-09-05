@@ -22,6 +22,7 @@
 		323B433724FAD6240076D074 /* CoctailNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323B433624FAD6240076D074 /* CoctailNetworkManager.swift */; };
 		323B433924FAD8440076D074 /* CoctailListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323B433824FAD8440076D074 /* CoctailListData.swift */; };
 		323B433B24FADC7E0076D074 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323B433A24FADC7E0076D074 /* MainTableViewController.swift */; };
+		3285B2CE2503F54E00F5415B /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285B2CD2503F54E00F5415B /* Array.swift */; };
 		32F65EBA24FD020E0061F4D2 /* DetailRandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F65EB924FD020E0061F4D2 /* DetailRandomViewController.swift */; };
 		32F65EC124FD3E790061F4D2 /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F65EC024FD3E790061F4D2 /* UIImageView+DownloadImage.swift */; };
 		32F65EC324FD6C990061F4D2 /* SearchCoctailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F65EC224FD6C990061F4D2 /* SearchCoctailViewController.swift */; };
@@ -46,6 +47,7 @@
 		323B433624FAD6240076D074 /* CoctailNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailNetworkManager.swift; sourceTree = "<group>"; };
 		323B433824FAD8440076D074 /* CoctailListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailListData.swift; sourceTree = "<group>"; };
 		323B433A24FADC7E0076D074 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		3285B2CD2503F54E00F5415B /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		32F65EB924FD020E0061F4D2 /* DetailRandomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRandomViewController.swift; sourceTree = "<group>"; };
 		32F65EC024FD3E790061F4D2 /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 		32F65EC224FD6C990061F4D2 /* SearchCoctailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoctailViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				32F65EC024FD3E790061F4D2 /* UIImageView+DownloadImage.swift */,
+				3285B2CD2503F54E00F5415B /* Array.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				323B432224FAD5990076D074 /* AppDelegate.swift in Sources */,
 				32283D1A25005783001ED185 /* CustomTableViewCellTwo.swift in Sources */,
 				32283D1E25005854001ED185 /* CustomTableViewCellThree.swift in Sources */,
+				3285B2CE2503F54E00F5415B /* Array.swift in Sources */,
 				32F65EC624FD7BCB0061F4D2 /* ApiConstants.swift in Sources */,
 				323B433B24FADC7E0076D074 /* MainTableViewController.swift in Sources */,
 				32F65EC124FD3E790061F4D2 /* UIImageView+DownloadImage.swift in Sources */,

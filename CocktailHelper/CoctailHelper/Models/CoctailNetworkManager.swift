@@ -10,7 +10,7 @@ import UIKit
 
 struct CoctailNetworkManager {
     func fetchCoctailList(result: @escaping ((CoctailListData) -> Void)) {
-        let urlString = ApiSend.startUrl + ApiSend.devlopmentKey + ApiSend.listCocktailsByA
+        let urlString = ApiSend.startUrl + ApiSend.devlopmentKey + "/search.php?s=\(randomString(length: 1))"
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { (data, response, error) in
@@ -31,6 +31,11 @@ struct CoctailNetworkManager {
             print(error.localizedDescription)
     }
     
+    }
+    
+    func randomString(length: Int) -> String {
+      let letters = "abcdefghijklmnopqrstuvwxyz"
+      return String((0..<length).map{ _ in letters.randomElement()! })
     }
     
 }

@@ -44,7 +44,7 @@ class MainTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? DetailRandomViewController {
-            destination.coctail = coctailList[tableView.indexPathForSelectedRow!.row]
+            destination.coctail = coctailList[tableView.indexPathForSelectedRow?.row ?? 1]
         }
     }
     

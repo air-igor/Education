@@ -16,6 +16,7 @@ class SearchCoctailViewController: UIViewController {
     
     var coctailNetworkManager = CoctailNetworkManager()
     var coctailList = [Drinks]()
+    var coctail: Drinks?
     
     
     override func viewDidLoad() {
@@ -23,7 +24,8 @@ class SearchCoctailViewController: UIViewController {
         coctailSearchTableView.delegate = self
         coctailSearchTableView.dataSource = self
         coctailSearchSearchBar.delegate = self
-
+        
+        
 
     }
     
@@ -52,27 +54,25 @@ extension SearchCoctailViewController: UITableViewDataSource, UITableViewDelegat
         return coctailList.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellSearch", for: indexPath)
         cell.textLabel?.text = coctailList[indexPath.row].strDrink
-          
+        
           return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showMore", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "showMore") {
-//            var viewController = segue.destinationViewController as! SearchCoctailViewController
-//            viewController.passedValue =
-//
+        guard let coctail = coctailList[safe: indexPath.row] else {
+            return
         }
+        
+        showDetailsModule(with: coctail)
     }
-    
-}
+
+
+    }
+
     
 
 extension SearchCoctailViewController: UISearchBarDelegate {
@@ -85,4 +85,25 @@ extension SearchCoctailViewController: UISearchBarDelegate {
             }
         }
     }
+}
+
+private extension SearchCoctailViewController  {
+    
+    func showDetailsModule(with coctail: Drinks) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(identifier: "showMore") as? DetailSearchViewController else {
+            return
+        }
+        
+        vc.coctail = coctail
+        
+        let navVC = UINavigationController(rootViewController: vc)
+        
+        navVC.modalPresentationStyle = .overFullScreen
+        present(navVC, animated: true, completion: nil)
+        
+        
+    }
+    
+
 }
