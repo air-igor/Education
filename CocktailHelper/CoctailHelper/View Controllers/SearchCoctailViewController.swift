@@ -81,7 +81,6 @@ extension SearchCoctailViewController: UISearchBarDelegate {
             DispatchQueue.main.async {
                 self?.coctailList = data.drinks
             self?.coctailSearchTableView.reloadData()
-                
             }
         }
     }

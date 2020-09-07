@@ -18,6 +18,7 @@ class CustomTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         imageBounds()
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

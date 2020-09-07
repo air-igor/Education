@@ -29,9 +29,9 @@ class DetailSearchViewController: UIViewController, UITableViewDelegate, UITable
         return 3
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 152
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 152
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -48,7 +48,7 @@ class DetailSearchViewController: UIViewController, UITableViewDelegate, UITable
         // MARK: CELL INGREDIENTS
         if indexPath.row < 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCellTwo.indetifier, for: indexPath) as? CustomTableViewCellTwo
-//            cell?.ingredientsLbl?.text = coctail?.ingredients
+            cell?.ingredientsLbl?.text = coctail?.ingredients
             
             return cell!
         }

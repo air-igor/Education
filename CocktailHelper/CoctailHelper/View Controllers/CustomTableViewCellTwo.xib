@@ -16,25 +16,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ingredients" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="U37-HS-qsI">
-                        <rect key="frame" x="8" y="8" width="304" height="84"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ingredients" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="U37-HS-qsI">
+                        <rect key="frame" x="8" y="30" width="304" height="62"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="19"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INGREDIENTS:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyd-Rc-xYD">
+                        <rect key="frame" x="16" y="8" width="93" height="18"/>
+                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="U37-HS-qsI" secondAttribute="bottom" constant="8" id="W3K-NA-hec"/>
-                    <constraint firstAttribute="trailing" secondItem="U37-HS-qsI" secondAttribute="trailing" constant="8" id="ifN-pg-Gl3"/>
-                    <constraint firstItem="U37-HS-qsI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="k7C-GY-EWd"/>
-                    <constraint firstItem="U37-HS-qsI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="wrD-qJ-prq"/>
+                    <constraint firstItem="dyd-Rc-xYD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="DTd-Tb-6aV"/>
+                    <constraint firstAttribute="trailing" secondItem="U37-HS-qsI" secondAttribute="trailing" constant="8" id="Gmw-Kg-FPr"/>
+                    <constraint firstItem="U37-HS-qsI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="KWm-1o-fGV"/>
+                    <constraint firstAttribute="bottom" secondItem="U37-HS-qsI" secondAttribute="bottom" constant="8" id="OAf-6G-OYj"/>
+                    <constraint firstItem="dyd-Rc-xYD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="lhU-yC-0bO"/>
+                    <constraint firstItem="U37-HS-qsI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="nzw-my-OFt"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="ingredientsLbl" destination="U37-HS-qsI" id="QJr-LX-JE3"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="128.57142857142856"/>
+            <point key="canvasLocation" x="137.68115942028987" y="127.90178571428571"/>
         </tableViewCell>
     </objects>
 </document>

@@ -13,16 +13,16 @@ class DetailRandomViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameCoctail: UILabel!
     @IBOutlet weak var instructionsCoctail: UILabel!
+    @IBOutlet weak var ingridients: UILabel!
+    
     
     var coctail: Drinks?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imageBounds()
+        updateInterface()
         
-        
-        nameCoctail.text = coctail?.strDrink
-
         guard let urlImageString = coctail?.strDrinkThumb else { return }
         let url = urlImageString
         imageView.downloaded(from: url)
@@ -33,4 +33,11 @@ class DetailRandomViewController: UIViewController {
         imageView.layer.cornerRadius = imageView.frame.height / 2
     }
     
+    func updateInterface() {
+        nameCoctail.text = coctail?.strDrink
+        ingridients.text = "Ingridients: \n\(coctail?.ingredients ?? "Non information")"
+        instructionsCoctail.text = "Instruction: \n\(coctail?.strInstructions ?? "Non information")"
+        
+        
+    }
 }

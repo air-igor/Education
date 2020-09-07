@@ -16,18 +16,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="strInstructions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mYf-49-GpT">
-                        <rect key="frame" x="8" y="8" width="304" height="84"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="strInstructions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYf-49-GpT">
+                        <rect key="frame" x="8" y="30" width="304" height="62"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="19"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INSTRUCTION:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KjX-lQ-3Id">
+                        <rect key="frame" x="16" y="8" width="98" height="18"/>
+                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="mYf-49-GpT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="gDP-NA-TCR"/>
-                    <constraint firstAttribute="trailing" secondItem="mYf-49-GpT" secondAttribute="trailing" constant="8" id="i0J-aM-7W4"/>
-                    <constraint firstItem="mYf-49-GpT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="rc2-wF-IX5"/>
-                    <constraint firstAttribute="bottom" secondItem="mYf-49-GpT" secondAttribute="bottom" constant="8" id="tp6-vX-Lk0"/>
+                    <constraint firstAttribute="bottom" secondItem="mYf-49-GpT" secondAttribute="bottom" constant="8" id="8mH-2c-Bjc"/>
+                    <constraint firstItem="mYf-49-GpT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="MKc-a6-AL9"/>
+                    <constraint firstAttribute="trailing" secondItem="mYf-49-GpT" secondAttribute="trailing" constant="8" id="MjN-Sj-V7P"/>
+                    <constraint firstItem="KjX-lQ-3Id" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="PHU-Ac-0IU"/>
+                    <constraint firstItem="KjX-lQ-3Id" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="S5F-bd-sA7"/>
+                    <constraint firstItem="mYf-49-GpT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="eWb-a5-bmX"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

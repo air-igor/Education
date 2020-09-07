@@ -89,10 +89,8 @@
 				323B433524FAD6050076D074 /* Models */,
 				32E14BB424FBBE2200EB2D7F /* View Controllers */,
 				32E14BB524FBBE6A00EB2D7F /* View */,
-				323B432A24FAD59A0076D074 /* Assets.xcassets */,
+				32F45B8A25069A5400E9891C /* Supporting files */,
 				323B432F24FAD59A0076D074 /* Info.plist */,
-				323B432124FAD5990076D074 /* AppDelegate.swift */,
-				323B432324FAD5990076D074 /* SceneDelegate.swift */,
 			);
 			path = CoctailHelper;
 			sourceTree = "<group>";
@@ -130,6 +128,16 @@
 				323B432C24FAD59A0076D074 /* LaunchScreen.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		32F45B8A25069A5400E9891C /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				323B432A24FAD59A0076D074 /* Assets.xcassets */,
+				323B432124FAD5990076D074 /* AppDelegate.swift */,
+				323B432324FAD5990076D074 /* SceneDelegate.swift */,
+			);
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 		32F65EBF24FD3E550061F4D2 /* Extensions */ = {
