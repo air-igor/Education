@@ -19,4 +19,4 @@
 <br>Оптимизация экрана только на Iphone 11, pro, pro max
 
 Функционал представлен в GIF:
-<br>![hippo](https://media.giphy.com/media/fwX15Pocz6uw02nqG1/giphy.gif) ![hippo](https://media.giphy.com/media/ZDzWvsR3S0iIbVvCFE/giphy.gif)
+<br>![hippo](https://media.giphy.com/media/fwX15Pocz6uw02nqG1/giphy.gif)     ![hippo](https://media.giphy.com/media/ZDzWvsR3S0iIbVvCFE/giphy.gif)
