@@ -11,3 +11,12 @@
 Функционал представлен в GIF:
 <br>![hippo](https://media.giphy.com/media/L46hP3YNgGG3L0k1Gi/giphy.gif)
 
+# My second app "CocktailHelper"
+<br>Приложение, которое поможет при приготовлении любого коктейля.
+<br>В качестве API был выбран сервис https://www.thecocktaildb.com/api.php
+<br>При каждом запуске приложение выводит список рандомных коктейлей. При выборе рандомного коктейля открывается его фото и способ приготовления(список нужных ингредиентов прилагается)
+<br>Есть возможность поиска опредленного коктейля по названию. При выборе детально показывается информация. Фото, ингредиенты, способ приготовления.
+<br>Оптимизация экрана только на Iphone 11, pro, pro max
+
+Функционал представлен в GIF:
+<br>![hippo](https://media.giphy.com/media/fwX15Pocz6uw02nqG1/giphy.gif) ![hippo](https://media.giphy.com/media/ZDzWvsR3S0iIbVvCFE/giphy.gif)
