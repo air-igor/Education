@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,9 +13,15 @@
 		32E46DB42507BCC4001470E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32E46DB22507BCC4001470E0 /* Main.storyboard */; };
 		32E46DB62507BCC5001470E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32E46DB52507BCC5001470E0 /* Assets.xcassets */; };
 		32E46DB92507BCC5001470E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32E46DB72507BCC5001470E0 /* LaunchScreen.storyboard */; };
+		32E46DC32507BEAE001470E0 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E46DC22507BEAE001470E0 /* MainTabBarController.swift */; };
+		32E46DC52507BFC2001470E0 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E46DC42507BFC2001470E0 /* SearchViewController.swift */; };
+		32E46DC72507DD3D001470E0 /* SearchResponseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E46DC62507DD3D001470E0 /* SearchResponseList.swift */; };
+		32E46DC92507EDD0001470E0 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E46DC82507EDD0001470E0 /* NetworkService.swift */; };
+		D65807921D590BF10ACB9BDC /* Pods_iSound.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6ECFB35E881F2D30FB44A5 /* Pods_iSound.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		006BE5DA4B14251505CA7DD6 /* Pods-iSound.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSound.release.xcconfig"; path = "Target Support Files/Pods-iSound/Pods-iSound.release.xcconfig"; sourceTree = "<group>"; };
 		32E46DA92507BCC4001470E0 /* iSound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32E46DAC2507BCC4001470E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32E46DAE2507BCC4001470E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +30,12 @@
 		32E46DB52507BCC5001470E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32E46DB82507BCC5001470E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32E46DBA2507BCC5001470E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32E46DC22507BEAE001470E0 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		32E46DC42507BFC2001470E0 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		32E46DC62507DD3D001470E0 /* SearchResponseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseList.swift; sourceTree = "<group>"; };
+		32E46DC82507EDD0001470E0 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		7C6ECFB35E881F2D30FB44A5 /* Pods_iSound.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iSound.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A22E8213F30DD560FB2A3F67 /* Pods-iSound.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSound.debug.xcconfig"; path = "Target Support Files/Pods-iSound/Pods-iSound.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +43,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D65807921D590BF10ACB9BDC /* Pods_iSound.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31883E033E7226D221FDBC44 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7C6ECFB35E881F2D30FB44A5 /* Pods_iSound.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		32E46DA02507BCC4001470E0 = {
 			isa = PBXGroup;
 			children = (
 				32E46DAB2507BCC4001470E0 /* iSound */,
 				32E46DAA2507BCC4001470E0 /* Products */,
+				B1715F4B1B0F6540780F3C54 /* Pods */,
+				31883E033E7226D221FDBC44 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +82,25 @@
 				32E46DAC2507BCC4001470E0 /* AppDelegate.swift */,
 				32E46DAE2507BCC4001470E0 /* SceneDelegate.swift */,
 				32E46DB02507BCC4001470E0 /* ViewController.swift */,
+				32E46DC22507BEAE001470E0 /* MainTabBarController.swift */,
+				32E46DC42507BFC2001470E0 /* SearchViewController.swift */,
+				32E46DC82507EDD0001470E0 /* NetworkService.swift */,
+				32E46DC62507DD3D001470E0 /* SearchResponseList.swift */,
 				32E46DB22507BCC4001470E0 /* Main.storyboard */,
 				32E46DB52507BCC5001470E0 /* Assets.xcassets */,
 				32E46DB72507BCC5001470E0 /* LaunchScreen.storyboard */,
 				32E46DBA2507BCC5001470E0 /* Info.plist */,
 			);
 			path = iSound;
+			sourceTree = "<group>";
+		};
+		B1715F4B1B0F6540780F3C54 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A22E8213F30DD560FB2A3F67 /* Pods-iSound.debug.xcconfig */,
+				006BE5DA4B14251505CA7DD6 /* Pods-iSound.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32E46DBD2507BCC5001470E0 /* Build configuration list for PBXNativeTarget "iSound" */;
 			buildPhases = (
+				FB67C457951DAAABD3548B12 /* [CP] Check Pods Manifest.lock */,
 				32E46DA52507BCC4001470E0 /* Sources */,
 				32E46DA62507BCC4001470E0 /* Frameworks */,
 				32E46DA72507BCC4001470E0 /* Resources */,
+				1A3518CD0F73D526060325AA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,14 +171,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1A3518CD0F73D526060325AA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iSound/Pods-iSound-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iSound/Pods-iSound-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iSound/Pods-iSound-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB67C457951DAAABD3548B12 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iSound-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		32E46DA52507BCC4001470E0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32E46DC52507BFC2001470E0 /* SearchViewController.swift in Sources */,
 				32E46DB12507BCC4001470E0 /* ViewController.swift in Sources */,
 				32E46DAD2507BCC4001470E0 /* AppDelegate.swift in Sources */,
+				32E46DC32507BEAE001470E0 /* MainTabBarController.swift in Sources */,
+				32E46DC72507DD3D001470E0 /* SearchResponseList.swift in Sources */,
 				32E46DAF2507BCC4001470E0 /* SceneDelegate.swift in Sources */,
+				32E46DC92507EDD0001470E0 /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +366,7 @@
 		};
 		32E46DBE2507BCC5001470E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A22E8213F30DD560FB2A3F67 /* Pods-iSound.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +385,7 @@
 		};
 		32E46DBF2507BCC5001470E0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 006BE5DA4B14251505CA7DD6 /* Pods-iSound.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
