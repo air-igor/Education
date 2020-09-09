@@ -23,7 +23,10 @@
 		32E46DE52507F8A2001470E0 /* SearchModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E46DDE2507F8A2001470E0 /* SearchModels.swift */; };
 		32E46DE62507F8A2001470E0 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E46DDF2507F8A2001470E0 /* SearchViewController.swift */; };
 		32E46DE72507F8A2001470E0 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E46DE02507F8A2001470E0 /* SearchInteractor.swift */; };
-		32E46DE82507F8A2001470E0 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32E46DE12507F8A2001470E0 /* SearchViewController.xib */; };
+		32E46DEA25094176001470E0 /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32E46DE925094176001470E0 /* SearchViewController.storyboard */; };
+		32E46DEC250943E5001470E0 /* UIViewController + Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E46DEB250943E5001470E0 /* UIViewController + Storyboard.swift */; };
+		32E46DF025095A2D001470E0 /* TrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32E46DEF25095A2D001470E0 /* TrackCell.xib */; };
+		32E46DF225095A41001470E0 /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E46DF125095A41001470E0 /* TrackCell.swift */; };
 		D65807921D590BF10ACB9BDC /* Pods_iSound.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6ECFB35E881F2D30FB44A5 /* Pods_iSound.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +50,10 @@
 		32E46DDE2507F8A2001470E0 /* SearchModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModels.swift; sourceTree = "<group>"; };
 		32E46DDF2507F8A2001470E0 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		32E46DE02507F8A2001470E0 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
-		32E46DE12507F8A2001470E0 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		32E46DE925094176001470E0 /* SearchViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchViewController.storyboard; sourceTree = "<group>"; };
+		32E46DEB250943E5001470E0 /* UIViewController + Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Storyboard.swift"; sourceTree = "<group>"; };
+		32E46DEF25095A2D001470E0 /* TrackCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackCell.xib; sourceTree = "<group>"; };
+		32E46DF125095A41001470E0 /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 		7C6ECFB35E881F2D30FB44A5 /* Pods_iSound.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iSound.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A22E8213F30DD560FB2A3F67 /* Pods-iSound.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSound.debug.xcconfig"; path = "Target Support Files/Pods-iSound/Pods-iSound.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,7 +106,7 @@
 				32E46DCA2507F6A1001470E0 /* Search */,
 				32E46DC42507BFC2001470E0 /* SearchMusicViewController.swift */,
 				32E46DB02507BCC4001470E0 /* ViewController.swift */,
-				32E46DC62507DD3D001470E0 /* SearchResponseList.swift */,
+				32E46DED250943EF001470E0 /* Helpers */,
 				32E46DB22507BCC4001470E0 /* Main.storyboard */,
 				32E46DB52507BCC5001470E0 /* Assets.xcassets */,
 				32E46DB72507BCC5001470E0 /* LaunchScreen.storyboard */,
@@ -112,13 +118,14 @@
 		32E46DCA2507F6A1001470E0 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				32E46DDB2507F8A2001470E0 /* SearchPresenter.swift */,
-				32E46DDC2507F8A2001470E0 /* SearchWorker.swift */,
-				32E46DDD2507F8A2001470E0 /* SearchRouter.swift */,
-				32E46DDE2507F8A2001470E0 /* SearchModels.swift */,
+				32E46DEE25095A1C001470E0 /* Cell */,
+				32E46DE925094176001470E0 /* SearchViewController.storyboard */,
 				32E46DDF2507F8A2001470E0 /* SearchViewController.swift */,
 				32E46DE02507F8A2001470E0 /* SearchInteractor.swift */,
-				32E46DE12507F8A2001470E0 /* SearchViewController.xib */,
+				32E46DDB2507F8A2001470E0 /* SearchPresenter.swift */,
+				32E46DDE2507F8A2001470E0 /* SearchModels.swift */,
+				32E46DDC2507F8A2001470E0 /* SearchWorker.swift */,
+				32E46DDD2507F8A2001470E0 /* SearchRouter.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -126,9 +133,35 @@
 		32E46DDA2507F831001470E0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				32E46DF325096306001470E0 /* Models */,
 				32E46DC82507EDD0001470E0 /* NetworkService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		32E46DED250943EF001470E0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				32E46DEB250943E5001470E0 /* UIViewController + Storyboard.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		32E46DEE25095A1C001470E0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				32E46DEF25095A2D001470E0 /* TrackCell.xib */,
+				32E46DF125095A41001470E0 /* TrackCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		32E46DF325096306001470E0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				32E46DC62507DD3D001470E0 /* SearchResponseList.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		B1715F4B1B0F6540780F3C54 /* Pods */ = {
@@ -201,8 +234,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				32E46DB92507BCC5001470E0 /* LaunchScreen.storyboard in Resources */,
+				32E46DF025095A2D001470E0 /* TrackCell.xib in Resources */,
 				32E46DB62507BCC5001470E0 /* Assets.xcassets in Resources */,
-				32E46DE82507F8A2001470E0 /* SearchViewController.xib in Resources */,
+				32E46DEA25094176001470E0 /* SearchViewController.storyboard in Resources */,
 				32E46DB42507BCC4001470E0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,9 +291,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				32E46DC52507BFC2001470E0 /* SearchMusicViewController.swift in Sources */,
+				32E46DEC250943E5001470E0 /* UIViewController + Storyboard.swift in Sources */,
 				32E46DB12507BCC4001470E0 /* ViewController.swift in Sources */,
 				32E46DAD2507BCC4001470E0 /* AppDelegate.swift in Sources */,
 				32E46DE72507F8A2001470E0 /* SearchInteractor.swift in Sources */,
+				32E46DF225095A41001470E0 /* TrackCell.swift in Sources */,
 				32E46DC32507BEAE001470E0 /* MainTabBarController.swift in Sources */,
 				32E46DC72507DD3D001470E0 /* SearchResponseList.swift in Sources */,
 				32E46DE32507F8A2001470E0 /* SearchWorker.swift in Sources */,
