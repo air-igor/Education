@@ -47,7 +47,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    searchBar(searchController.searchBar, textDidChange: "Niletto")
     setup()
     setupSearchBar()
     setupTableView()

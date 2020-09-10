@@ -31,6 +31,11 @@ class TrackDetailView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        let scale: CGFloat = 0.8
+        trackImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+        trackImageView.layer.cornerRadius = 5
+        
+        
         trackImageView.backgroundColor = .red
     }
     
@@ -38,6 +43,7 @@ class TrackDetailView: UIView {
         trackTitleLbl.text = viewModel.trackName
         authroTitleLbl.text = viewModel.artistName
         playTrack(previewUrl: viewModel.previewUrl)
+        monitorStartTime()
         let string600 = viewModel.iconUrlString?.replacingOccurrences(of: "100x100", with: "600x600")
         guard let url = URL(string: string600 ?? "") else { return }
         trackImageView.sd_setImage(with: url, completed: nil)
@@ -48,6 +54,30 @@ class TrackDetailView: UIView {
         let playerItem = AVPlayerItem(url: url)
         player.replaceCurrentItem(with: playerItem)
         player.play()
+    }
+    
+    private func monitorStartTime() {
+        
+        let time = CMTimeMake(value: 1, timescale: 3)
+        let times = [NSValue(time: time)]
+        player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in
+            self?.enlargeTrackImageView()
+        }
+        
+    }
+
+    
+    private func enlargeTrackImageView() {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
+            self.trackImageView.transform = .identity
+        }, completion: nil)
+    }
+    
+    private func reduceTrackImageView() {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
+            let scale: CGFloat = 0.8
+            self.trackImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+        }, completion: nil)
     }
     
     @IBAction func handleVolumeSlider(_ sender: Any) {
@@ -70,9 +100,11 @@ class TrackDetailView: UIView {
         if player.timeControlStatus == .paused {
             player.play()
             playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            enlargeTrackImageView()
         } else {
             player.pause()
             playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            reduceTrackImageView()
         }
     }
     
