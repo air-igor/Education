@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		320475A1250A92BE00976C83 /* TrackDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 320475A0250A92BE00976C83 /* TrackDetailView.xib */; };
 		320475A3250A92C800976C83 /* TrackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320475A2250A92C800976C83 /* TrackDetailView.swift */; };
+		323454BE250D593600BF43CC /* CMTime + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323454BD250D593600BF43CC /* CMTime + Extensions.swift */; };
 		32CF3B60250A8BA00098EDB9 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CF3B5F250A8BA00098EDB9 /* FooterView.swift */; };
 		32E46DAD2507BCC4001470E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E46DAC2507BCC4001470E0 /* AppDelegate.swift */; };
 		32E46DAF2507BCC4001470E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E46DAE2507BCC4001470E0 /* SceneDelegate.swift */; };
@@ -37,6 +38,7 @@
 		006BE5DA4B14251505CA7DD6 /* Pods-iSound.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSound.release.xcconfig"; path = "Target Support Files/Pods-iSound/Pods-iSound.release.xcconfig"; sourceTree = "<group>"; };
 		320475A0250A92BE00976C83 /* TrackDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackDetailView.xib; sourceTree = "<group>"; };
 		320475A2250A92C800976C83 /* TrackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailView.swift; sourceTree = "<group>"; };
+		323454BD250D593600BF43CC /* CMTime + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime + Extensions.swift"; sourceTree = "<group>"; };
 		32CF3B5F250A8BA00098EDB9 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		32E46DA92507BCC4001470E0 /* iSound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32E46DAC2507BCC4001470E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				32E46DEB250943E5001470E0 /* UIViewController + Storyboard.swift */,
+				323454BD250D593600BF43CC /* CMTime + Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				323454BE250D593600BF43CC /* CMTime + Extensions.swift in Sources */,
 				32E46DC52507BFC2001470E0 /* SearchMusicViewController.swift in Sources */,
 				32E46DEC250943E5001470E0 /* UIViewController + Storyboard.swift in Sources */,
 				32E46DB12507BCC4001470E0 /* ViewController.swift in Sources */,

@@ -11,6 +11,13 @@ import SDWebImage
 import AVKit
 
 
+
+protocol TrackMovingDelegate: class {
+    func moveBackForPreviousTrack() -> SearchViewModel.Cell?
+    func moveForwardForPreviousTrack() -> SearchViewModel.Cell?
+
+}
+
 class TrackDetailView: UIView {
     @IBOutlet weak var currentTimeSlider: UISlider!
     @IBOutlet weak var trackImageView: UIImageView!
@@ -25,6 +32,8 @@ class TrackDetailView: UIView {
         avPlayer.automaticallyWaitsToMinimizeStalling = false
         return avPlayer
     }()
+    
+    weak var delegate: TrackMovingDelegate?
     
     
     @IBOutlet weak var trackTitleLbl: UILabel!
@@ -44,6 +53,7 @@ class TrackDetailView: UIView {
         authroTitleLbl.text = viewModel.artistName
         playTrack(previewUrl: viewModel.previewUrl)
         monitorStartTime()
+        observerPlayerCurrentTime()
         let string600 = viewModel.iconUrlString?.replacingOccurrences(of: "100x100", with: "600x600")
         guard let url = URL(string: string600 ?? "") else { return }
         trackImageView.sd_setImage(with: url, completed: nil)
@@ -62,8 +72,28 @@ class TrackDetailView: UIView {
         let times = [NSValue(time: time)]
         player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in
             self?.enlargeTrackImageView()
+            
         }
         
+    }
+    
+    private func observerPlayerCurrentTime() {
+        let interval = CMTimeMake(value: 1, timescale: 2)
+        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] (time) in
+            self?.currentTimeLbl.text = time.toDisplayString()
+            
+            let durationtime = self?.player.currentItem?.duration
+            let currentDurationTimeText = ((durationtime ?? CMTimeMake(value: 1, timescale: 1)) - time).toDisplayString()
+            self?.durationLbl.text = "-\(currentDurationTimeText)"
+            self?.updateCurrentTimeSlider()
+        }
+    }
+    
+    private func updateCurrentTimeSlider() {
+        let currentTimeSeconds = CMTimeGetSeconds(player.currentTime())
+        let durationSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1))
+        let percantage = currentTimeSeconds / durationSeconds
+        self.currentTimeSlider.value = Float(percantage)
     }
 
     
@@ -81,9 +111,20 @@ class TrackDetailView: UIView {
     }
     
     @IBAction func handleVolumeSlider(_ sender: Any) {
+        
+        player.volume = volumeSlider.value
+        
     }
     
     @IBAction func handleCurrentTimerSlider(_ sender: Any) {
+        
+        let percantage = currentTimeSlider.value
+        guard let duration = player.currentItem?.duration else { return }
+        let durationInSeconds = CMTimeGetSeconds(duration)
+        let seekTimeInSeconds = Float64(percantage) * durationInSeconds
+        let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, preferredTimescale: 1)
+        player.seek(to: seekTime)
+
     }
     
     @IBAction func dragDownButtonTap(_ sender: Any) {
@@ -91,9 +132,18 @@ class TrackDetailView: UIView {
     }
     
     @IBAction func previousTrack(_ sender: Any) {
+        
+        let cellViewModel = delegate?.moveBackForPreviousTrack()
+        guard let cellInfo = cellViewModel else { return }
+        self.set(viewModel: cellInfo)
+        
     }
     
     @IBAction func nextTrack(_ sender: Any) {
+        let cellViewModel = delegate?.moveBackForPreviousTrack()
+        guard let cellInfo = cellViewModel else { return }
+        self.set(viewModel: cellInfo)
+        
     }
     
     @IBAction func playPauseAction(_ sender: Any) {
