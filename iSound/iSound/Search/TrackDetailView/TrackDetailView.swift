@@ -26,6 +26,13 @@ class TrackDetailView: UIView {
     @IBOutlet weak var authroTitleLbl: UILabel!
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var volumeSlider: UISlider!
+    @IBOutlet weak var miniTrackView: UIView!
+    @IBOutlet weak var miniGoFOrwardButtom: UIButton!
+    @IBOutlet weak var maximazedStackView: UIStackView!
+    @IBOutlet weak var miniImageView: UIImageView!
+    @IBOutlet weak var miniTrackTitleLbl: UILabel!
+    @IBOutlet weak var miniPausePlayBottom: UIButton!
+    
     
     let player: AVPlayer = {
        let avPlayer = AVPlayer()
@@ -34,29 +41,81 @@ class TrackDetailView: UIView {
     }()
     
     weak var delegate: TrackMovingDelegate?
-    
+    weak var tabBarDelegate: MainTabBarControllerDelegate?
     
     @IBOutlet weak var trackTitleLbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupGestures()
         
         let scale: CGFloat = 0.8
         trackImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
         trackImageView.layer.cornerRadius = 5
+        miniPausePlayBottom.imageEdgeInsets = .init(top: 11, left: 11, bottom: 11, right: 11)
         
         
-        trackImageView.backgroundColor = .red
     }
     
     func set(viewModel: SearchViewModel.Cell) {
+        miniTrackTitleLbl.text = viewModel.trackName
         trackTitleLbl.text = viewModel.trackName
         authroTitleLbl.text = viewModel.artistName
         playTrack(previewUrl: viewModel.previewUrl)
         monitorStartTime()
         observerPlayerCurrentTime()
+        playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+        miniPausePlayBottom.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
         let string600 = viewModel.iconUrlString?.replacingOccurrences(of: "100x100", with: "600x600")
         guard let url = URL(string: string600 ?? "") else { return }
+        miniImageView.sd_setImage(with: url, completed: nil)
         trackImageView.sd_setImage(with: url, completed: nil)
+    }
+    
+    private func setupGestures() {
+        
+        miniTrackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapMaximazied)))
+        miniTrackView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan)))
+    }
+    @objc private func handlePan(gesture: UIPanGestureRecognizer) {
+        switch gesture.state {
+        case .began:
+            print("")
+        case .changed:
+            handlePanChange(gesture: gesture)
+        case .ended:
+            handlePanEnded(gesture: gesture)
+        @unknown default:
+            print("")
+        }
+        
+    }
+    
+    private func handlePanChange(gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: self.superview)
+        self.transform = CGAffineTransform(translationX: 0, y: translation.y)
+        
+        let newAlpha = 1 + translation.y / 200
+        self.miniTrackView.alpha = newAlpha < 0 ? 0 : newAlpha
+        self.maximazedStackView.alpha = -translation.y / 200
+    }
+    
+    private func handlePanEnded(gesture: UIPanGestureRecognizer) {
+        let transltaion = gesture.translation(in: self.superview)
+        let velocity = gesture.velocity(in: self.superview)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
+            if transltaion.y < -200 || velocity.y < -500 {
+                self.transform = .identity
+                self.tabBarDelegate?.miximizedTrackDetailController(viewModel: nil)
+            }else {
+                self.miniTrackView.alpha = 1
+                self.maximazedStackView.alpha = 0
+            }
+        }, completion: nil)
+    }
+    
+    @objc private func handleTapMaximazied() {
+        self.tabBarDelegate?.miximizedTrackDetailController(viewModel: nil)
     }
     
     private func playTrack(previewUrl: String?) {
@@ -128,7 +187,9 @@ class TrackDetailView: UIView {
     }
     
     @IBAction func dragDownButtonTap(_ sender: Any) {
-        self.removeFromSuperview()
+        
+        self.tabBarDelegate?.minimizedTrackDetailController()
+//        self.removeFromSuperview()
     }
     
     @IBAction func previousTrack(_ sender: Any) {
@@ -140,7 +201,8 @@ class TrackDetailView: UIView {
     }
     
     @IBAction func nextTrack(_ sender: Any) {
-        let cellViewModel = delegate?.moveBackForPreviousTrack()
+        
+        let cellViewModel = delegate?.moveForwardForPreviousTrack()
         guard let cellInfo = cellViewModel else { return }
         self.set(viewModel: cellInfo)
         
@@ -150,10 +212,12 @@ class TrackDetailView: UIView {
         if player.timeControlStatus == .paused {
             player.play()
             playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            miniPausePlayBottom.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
             enlargeTrackImageView()
         } else {
             player.pause()
             playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            miniPausePlayBottom.setImage(#imageLiteral(resourceName: "play"), for: .normal)
             reduceTrackImageView()
         }
     }

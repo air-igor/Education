@@ -13,6 +13,57 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wia-Uu-Dtc">
+                    <rect key="frame" x="0.0" y="44" width="414" height="64"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="3QN-BR-H4P">
+                            <rect key="frame" x="8" y="8" width="398" height="48"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="library" translatesAutoresizingMaskIntoConstraints="NO" id="lz5-5g-beP">
+                                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="48" id="Exq-Or-6kS"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TrackTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kc8-Yw-xd1">
+                                    <rect key="frame" x="64" y="0.0" width="210" height="48"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q8k-p4-u8p">
+                                    <rect key="frame" x="290" y="0.0" width="44" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="44" id="5CG-QJ-XrQ"/>
+                                    </constraints>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" image="pause"/>
+                                    <connections>
+                                        <action selector="playPauseAction:" destination="Ruc-4J-OcQ" eventType="touchUpInside" id="XLv-oh-ySO"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svt-1k-bSc">
+                                    <rect key="frame" x="350" y="0.0" width="48" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="48" id="Zi8-fI-kjU"/>
+                                    </constraints>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <state key="normal" image="Right"/>
+                                    <connections>
+                                        <action selector="nextTrack:" destination="Ruc-4J-OcQ" eventType="touchUpInside" id="ylt-FN-GRr"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="3QN-BR-H4P" firstAttribute="leading" secondItem="wia-Uu-Dtc" secondAttribute="leading" constant="8" id="0f3-Kw-hGh"/>
+                        <constraint firstItem="3QN-BR-H4P" firstAttribute="top" secondItem="wia-Uu-Dtc" secondAttribute="top" constant="8" id="4WX-g1-jEU"/>
+                        <constraint firstAttribute="height" constant="64" id="4uJ-T9-DPj"/>
+                        <constraint firstAttribute="bottom" secondItem="3QN-BR-H4P" secondAttribute="bottom" constant="8" id="m1N-4i-j1P"/>
+                        <constraint firstAttribute="trailing" secondItem="3QN-BR-H4P" secondAttribute="trailing" constant="8" id="seF-9D-oV4"/>
+                    </constraints>
+                </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Qgp-gc-QZ8">
                     <rect key="frame" x="30" y="44" width="354" height="788"/>
                     <subviews>
@@ -138,8 +189,11 @@
             <constraints>
                 <constraint firstItem="Qgp-gc-QZ8" firstAttribute="leading" secondItem="Dd2-GN-8e1" secondAttribute="leading" constant="30" id="BGN-rk-M22"/>
                 <constraint firstItem="Dd2-GN-8e1" firstAttribute="trailing" secondItem="Qgp-gc-QZ8" secondAttribute="trailing" constant="30" id="P9S-iJ-Iox"/>
+                <constraint firstItem="wia-Uu-Dtc" firstAttribute="top" secondItem="Dd2-GN-8e1" secondAttribute="top" id="XfH-4V-xQH"/>
                 <constraint firstItem="Dd2-GN-8e1" firstAttribute="bottom" secondItem="Qgp-gc-QZ8" secondAttribute="bottom" constant="30" id="azq-h1-DzK"/>
                 <constraint firstItem="Qgp-gc-QZ8" firstAttribute="top" secondItem="Dd2-GN-8e1" secondAttribute="top" id="reE-ne-su9"/>
+                <constraint firstItem="Dd2-GN-8e1" firstAttribute="trailing" secondItem="wia-Uu-Dtc" secondAttribute="trailing" id="uap-GC-P91"/>
+                <constraint firstItem="wia-Uu-Dtc" firstAttribute="leading" secondItem="Dd2-GN-8e1" secondAttribute="leading" id="wBe-Ig-gvT"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Dd2-GN-8e1"/>
             <connections>
@@ -147,6 +201,12 @@
                 <outlet property="currentTimeLbl" destination="Mc7-nA-eYR" id="pTW-rY-KnJ"/>
                 <outlet property="currentTimeSlider" destination="uZt-Gm-YgO" id="ce5-hv-qwf"/>
                 <outlet property="durationLbl" destination="kLr-UM-IlB" id="5Xl-Oa-9KH"/>
+                <outlet property="maximazedStackView" destination="Qgp-gc-QZ8" id="gf4-FC-Lai"/>
+                <outlet property="miniGoFOrwardButtom" destination="svt-1k-bSc" id="P39-eb-aCX"/>
+                <outlet property="miniImageView" destination="lz5-5g-beP" id="STM-fZ-tOO"/>
+                <outlet property="miniPausePlayBottom" destination="Q8k-p4-u8p" id="77T-2Q-xF1"/>
+                <outlet property="miniTrackTitleLbl" destination="Kc8-Yw-xd1" id="enu-hV-9B6"/>
+                <outlet property="miniTrackView" destination="wia-Uu-Dtc" id="12M-mP-JI4"/>
                 <outlet property="playPauseButton" destination="v05-vy-3Gw" id="jhD-Iy-PKc"/>
                 <outlet property="trackImageView" destination="gj4-0c-w6l" id="dtr-Mt-EXs"/>
                 <outlet property="trackTitleLbl" destination="DRZ-ul-1Tj" id="i9V-B4-LnV"/>
@@ -154,6 +214,11 @@
             </connections>
             <point key="canvasLocation" x="166.66666666666669" y="57.589285714285708"/>
         </view>
+        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="JRQ-nF-kJe">
+            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <point key="canvasLocation" x="116" y="411"/>
+        </activityIndicatorView>
     </objects>
     <resources>
         <image name="Drag Down" width="37" height="12"/>
@@ -161,6 +226,7 @@
         <image name="IconMax" width="17" height="17"/>
         <image name="Left" width="34" height="20"/>
         <image name="Right" width="34" height="20"/>
+        <image name="library" width="22" height="25"/>
         <image name="pause" width="57" height="57"/>
     </resources>
 </document>
