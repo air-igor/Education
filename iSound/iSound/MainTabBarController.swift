@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 protocol MainTabBarControllerDelegate: class {
     func minimizedTrackDetailController()
@@ -21,17 +22,24 @@ class MainTabBarController: UITabBarController {
 
     let trackDetailView: TrackDetailView = TrackDetailView.loadFromNib()
     let searchVC: SearchViewController = SearchViewController.loadFromStoryboard()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var library = Library()
+        library.tabBarDelegate = self
+        let hostVC = UIHostingController(rootView: library)
+        hostVC.tabBarItem.image = #imageLiteral(resourceName: "library")
+        hostVC.tabBarItem.title = "Library"
+
         tabBar.tintColor = #colorLiteral(red: 1, green: 0, blue: 0.3764705882, alpha: 1)
         setupTrackDetailView()
         
+        
         searchVC.tabBarDelegate = self
         viewControllers = [
-            generateViewController(rootViewController: searchVC, image: #imageLiteral(resourceName: "search"), title: "Search"),
-            generateViewController(rootViewController: ViewController(), image: #imageLiteral(resourceName: "library"), title: "Library")
+            hostVC,
+            generateViewController(rootViewController: searchVC, image: #imageLiteral(resourceName: "search"), title: "Search")
         ]
 
     }
@@ -74,8 +82,8 @@ class MainTabBarController: UITabBarController {
 extension MainTabBarController: MainTabBarControllerDelegate {
     func miximizedTrackDetailController(viewModel: SearchViewModel.Cell?) {
         
-        miximizedTopAnchorConstraints.isActive = true
         minimizedTopAnchorConstraints.isActive = false
+        miximizedTopAnchorConstraints.isActive = true
         miximizedTopAnchorConstraints.constant = 0
         bottomAnchorConstraint.constant = 0
         

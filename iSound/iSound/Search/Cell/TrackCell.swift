@@ -23,6 +23,7 @@ class TrackCell: UITableViewCell {
     @IBOutlet weak var trackNameLbl: UILabel!
     @IBOutlet weak var trackImageView: UIImageView!
     @IBOutlet weak var artistNameLbl: UILabel!
+    @IBOutlet weak var addTrackOutlet: UIButton!
     @IBOutlet weak var collectionNameLbl: UILabel!
     
     override func awakeFromNib() {
@@ -35,7 +36,21 @@ class TrackCell: UITableViewCell {
         trackImageView.image = nil
     }
     
-    func set(viewModel: TrackCellViewModel) {
+    var cell: SearchViewModel.Cell?
+    
+    func set(viewModel: SearchViewModel.Cell) {
+        self.cell = viewModel
+
+        let savedTrack = UserDefaults.standard.savedTracks()
+        let hasFavourite = savedTrack.firstIndex(where: {
+            $0.trackName == self.cell?.trackName && $0.artistName == self.cell?.artistName
+        }) != nil
+        if hasFavourite {
+            addTrackOutlet.isHidden = true
+        } else {
+            addTrackOutlet.isHidden = false
+        }
+        
         trackNameLbl.text = viewModel.trackName
         artistNameLbl.text = viewModel.artistName
         collectionNameLbl.text = viewModel.collectionName
@@ -44,4 +59,26 @@ class TrackCell: UITableViewCell {
         trackImageView.sd_setImage(with: url, completed: nil)
 
     }
+    
+    
+    @IBAction func addTrackAction(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        guard let cell = cell else { return }
+        addTrackOutlet.isHidden = true
+        
+        var listOfTracks = UserDefaults.standard.savedTracks()
+        listOfTracks.append(cell)
+        
+        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: listOfTracks, requiringSecureCoding: false) {
+            defaults.set(savedData, forKey: UserDefaults.favouriteTrackKey)
+        }
+        
+        
+        if let saveData = try? NSKeyedArchiver.archivedData(withRootObject: listOfTracks, requiringSecureCoding: false) {
+            let defaults = UserDefaults.standard
+            defaults.set(saveData, forKey: "tracks")
+        }
+        
+    }
+    
 }

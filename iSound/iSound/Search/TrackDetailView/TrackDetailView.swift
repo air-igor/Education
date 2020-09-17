@@ -12,7 +12,7 @@ import AVKit
 
 
 
-protocol TrackMovingDelegate: class {
+protocol TrackMovingDelegate {
     func moveBackForPreviousTrack() -> SearchViewModel.Cell?
     func moveForwardForPreviousTrack() -> SearchViewModel.Cell?
 
@@ -40,7 +40,7 @@ class TrackDetailView: UIView {
         return avPlayer
     }()
     
-    weak var delegate: TrackMovingDelegate?
+    var delegate: TrackMovingDelegate?
     weak var tabBarDelegate: MainTabBarControllerDelegate?
     
     @IBOutlet weak var trackTitleLbl: UILabel!
@@ -75,6 +75,7 @@ class TrackDetailView: UIView {
         
         miniTrackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapMaximazied)))
         miniTrackView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan)))
+        addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismissalPan)))
     }
     @objc private func handlePan(gesture: UIPanGestureRecognizer) {
         switch gesture.state {
@@ -112,6 +113,24 @@ class TrackDetailView: UIView {
                 self.maximazedStackView.alpha = 0
             }
         }, completion: nil)
+    }
+    
+    @objc private func handleDismissalPan(gesture: UIPanGestureRecognizer) {
+        switch gesture.state {
+        case .changed:
+            let translation = gesture.translation(in: self.superview)
+            maximazedStackView.transform = CGAffineTransform(translationX: 0, y: translation.y)
+        case .ended:
+            let translation = gesture.translation(in: self.superview)
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+                self.maximazedStackView.transform = .identity
+                if translation.y > 50 {
+                    self.tabBarDelegate?.minimizedTrackDetailController()
+                }
+            }, completion: nil)
+        @unknown default:
+            print("")
+        }
     }
     
     @objc private func handleTapMaximazied() {
