@@ -18,6 +18,7 @@
 		325188F625193B260064032B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325188F525193B260064032B /* SearchViewController.swift */; };
 		325188F825193C360064032B /* DetailHeroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325188F725193C360064032B /* DetailHeroViewController.swift */; };
 		325188FA25193D630064032B /* HeroFavoritesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325188F925193D630064032B /* HeroFavoritesListController.swift */; };
+		325696BC251A217600F900C6 /* HeroesNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325696BB251A217600F900C6 /* HeroesNetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		325188F525193B260064032B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		325188F725193C360064032B /* DetailHeroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroViewController.swift; sourceTree = "<group>"; };
 		325188F925193D630064032B /* HeroFavoritesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroFavoritesListController.swift; sourceTree = "<group>"; };
+		325696BB251A217600F900C6 /* HeroesNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesNetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 		32263F092519373700035C3D /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				325696BB251A217600F900C6 /* HeroesNetworkManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				325188FA25193D630064032B /* HeroFavoritesListController.swift in Sources */,
 				32263F06251933B800035C3D /* ApiConstants.swift in Sources */,
 				325188F825193C360064032B /* DetailHeroViewController.swift in Sources */,
+				325696BC251A217600F900C6 /* HeroesNetworkManager.swift in Sources */,
 				32263F082519358A00035C3D /* HeroesModel.swift in Sources */,
 				32263F0C25193A1B00035C3D /* MainTabBarController.swift in Sources */,
 				32263EED251932F400035C3D /* AppDelegate.swift in Sources */,
