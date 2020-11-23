@@ -10,8 +10,7 @@ import UIKit
 import Alamofire
 
 
-class NetworkHeroesManager {
-    let realm = HeroDatabaseServiceRealm.shared
+class NetworkHeroesManager {    
     func getHeroesList(completion: @escaping ([HeroesDataManager]?) -> Void) {
         let url = "https://api.opendota.com/api/heroStats"
         
@@ -32,7 +31,6 @@ class NetworkHeroesManager {
             } catch let jsonError {
                 print(jsonError)
                 completion(nil)
-                
             }
             //            let someString = String(data: data, encoding: .utf8)
             //            print(someString ?? "")
