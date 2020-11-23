@@ -13,13 +13,16 @@ class SearchViewController: UITableViewController {
     let searchController = UISearchController(searchResultsController: nil)
     
     let heroesNetworkManager = HeroesNetworkManager()
-    var heroesList = [Heroes]()
+    var heroList = [Heroes]()
     var heroes: Heroes?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        heroesNetworkManager.getHeroesList(result: {[ weak self] in
-            self?.heroesList = $0.localized_name
+        heroesNetworkManager.getHeroesList(result: { (_) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                
+            }
         })
         setupSearchBar()
         view.backgroundColor = .white
@@ -34,14 +37,14 @@ class SearchViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return heroesList.count
+        return heroList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//        let hero = heroes[indexPath.row]
-        cell.textLabel?.text = "test"
-        cell.imageView?.image = #imageLiteral(resourceName: "search")
+        let hero = heroList[indexPath.row]
+        cell.textLabel?.text = hero.localizedName
+        cell.imageView?.downloaded(from: ApiSend.startUrl + heroes!.img)
         return cell
     }
     
@@ -49,6 +52,6 @@ class SearchViewController: UITableViewController {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
     }
+    
 }

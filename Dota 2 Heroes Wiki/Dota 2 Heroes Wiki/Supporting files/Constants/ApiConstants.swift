@@ -10,7 +10,7 @@ import Foundation
 
 
 enum ApiSend {
-    static let startUrl = "https://api.opendota.com/"
-    static let heroKey = "api/heroStats"
+    static let startUrl = "https://api.opendota.com"
+    static let heroKey = "/api/heroStats"
     
 }
