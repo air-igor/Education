@@ -19,7 +19,7 @@ class MainTabBarController: UITabBarController {
         viewControllers = [
             generateViewController(rootViewController: MyAddedHeroesViewController(), image: #imageLiteral(resourceName: "dHome"), title: ""),
             generateViewController(rootViewController: AllHeroesListViewController(), image: #imageLiteral(resourceName: "dSearch"), title: "All Heroes"),
-            generateViewController(rootViewController: ViewController(), image: #imageLiteral(resourceName: "dFavorites"), title: "Favorites Heroes")
+            generateViewController(rootViewController: FavoritesViewController(), image: #imageLiteral(resourceName: "dFavorites"), title: "Favorites Heroes")
         ]
     }
     

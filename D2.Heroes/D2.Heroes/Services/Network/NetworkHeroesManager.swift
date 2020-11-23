@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 
-class NetworkHeroesManager {    
+class NetworkHeroesManager {
     func getHeroesList(completion: @escaping ([HeroesDataManager]?) -> Void) {
         let url = "https://api.opendota.com/api/heroStats"
         

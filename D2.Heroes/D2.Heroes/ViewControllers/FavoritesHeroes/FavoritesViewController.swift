@@ -8,14 +8,30 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FavoritesViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupTableView()
         view.backgroundColor = .white
     }
-
+    
+    private func setupTableView() {
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        tableView.tableFooterView = UIView()
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
+        
+        return cell
+    
+    }
+    
 
 }
 

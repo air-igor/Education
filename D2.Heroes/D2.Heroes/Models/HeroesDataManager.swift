@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct HeroesDataManager: Codable {
+class HeroesDataManager: Codable {
     var localizedName: String
     var img: String
     var attackType: String

@@ -36,6 +36,7 @@ class HeroCell: UITableViewCell {
         heroImageView.contentMode = .scaleAspectFill
     }
     
+    
     @IBAction func addHero(_ sender: Any) {
         print("test")
     }
