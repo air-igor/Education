@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FavoritesViewController: UITableViewController {
-
+    
+    let results = realm.objects(HeroEntry.self)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -22,12 +25,14 @@ class FavoritesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        print(results.count)
+        return results.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
-        
+        let heroSaved = results[indexPath.row]
+//        cell.textLabel?.text = heroSaved.localizedName
         return cell
     
     }

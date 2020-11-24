@@ -14,7 +14,7 @@ class AllHeroesListViewController: UITableViewController {
     
     
     var networkHeroesManager = NetworkHeroesManager()
-    var heroesDataManager = [HeroesDataManager]()
+    var heroesDataManager = [HeroEntry]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class AllHeroesListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HeroCell.reuseId, for: indexPath) as! HeroCell
         let hero = heroesDataManager[indexPath.row]
-        let url = URL(string: "https://api.opendota.com" + hero.img)
+        let url = URL(string: ApiConstants.heroImgUrl + "\(hero.img ?? ApiConstants.defaultImg)")
         cell.heroImageView.sd_setImage(with: url, completed: nil)
         cell.heroName.text = hero.localizedName
         cell.attackType.text = hero.attackType

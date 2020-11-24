@@ -11,8 +11,8 @@ import SDWebImage
 
 class DetailHerosViewController: UITableViewController {
     
-    var detailHero: HeroesDataManager!
-    var heroesManager = [HeroesDataManager]()
+    var detailHero: HeroEntry!
+    var heroesManager = [HeroEntry]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +42,8 @@ class DetailHerosViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DetailCell.reuseId, for: indexPath) as! DetailCell
-        let url = URL(string: "https://api.opendota.com" + detailHero.img)
-        let urlIcon = URL(string: "https://api.opendota.com" + detailHero.icon)
+        let url = URL(string: "https://api.opendota.com" + detailHero.img!)
+        let urlIcon = URL(string: "https://api.opendota.com" + detailHero.icon!)
         cell.heroImg.sd_setImage(with: url, completed: nil)
         cell.nameLbl.text = detailHero.localizedName
         cell.healthLbl.text = "\(detailHero.baseHealth)"

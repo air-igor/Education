@@ -46,7 +46,7 @@
                         <color key="tintColor" red="0.92389315370000002" green="0.18627315759999999" blue="0.38823947310000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <state key="normal" image="plus" catalog="system"/>
                         <connections>
-                            <action selector="addHero:" destination="U6e-7m-4JU" eventType="touchUpInside" id="tRR-Sw-96f"/>
+                            <action selector="addHeroAction:" destination="U6e-7m-4JU" eventType="touchUpInside" id="ZjI-lk-QYx"/>
                         </connections>
                     </button>
                 </subviews>

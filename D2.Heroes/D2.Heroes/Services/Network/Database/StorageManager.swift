@@ -13,18 +13,15 @@ let realm = try! Realm()
 class StorageManager {
     
     static func saveObject(_ array: [HeroEntry]) {
-        try! realm.write {
-            array.forEach({
-                realm.add($0)
-            })
-        }
+           try! realm.write {
+            realm.add(array)
+             }
+
     }
     
     static func deleteObject(_ array: [HeroEntry]) {
         try! realm.write {
-            array.forEach({
-                realm.delete($0)
-            })
-        }
+        realm.delete(array)
+         }
     }
 }

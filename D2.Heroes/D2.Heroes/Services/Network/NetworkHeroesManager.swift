@@ -11,8 +11,10 @@ import Alamofire
 
 
 class NetworkHeroesManager {
-    func getHeroesList(completion: @escaping ([HeroesDataManager]?) -> Void) {
-        let url = "https://api.opendota.com/api/heroStats"
+    let savedHeroes = realm.objects(HeroEntry.self)
+
+    func getHeroesList(completion: @escaping ([HeroEntry]?) -> Void) {
+        let url = ApiConstants.globalUrl
         
         AF.request(url).response { (dataResponse) in
             if let error = dataResponse.error {
@@ -25,8 +27,11 @@ class NetworkHeroesManager {
             
             let decoder = JSONDecoder()
             do {
-                let objects = try decoder.decode([HeroesDataManager].self, from: data)
-                print(objects)
+                let objects = try decoder.decode([HeroEntry].self, from: data)
+//                print(objects)
+                if self.savedHeroes.count == 0 {
+                    StorageManager.saveObject(objects)
+                }
                 completion(objects)
             } catch let jsonError {
                 print(jsonError)

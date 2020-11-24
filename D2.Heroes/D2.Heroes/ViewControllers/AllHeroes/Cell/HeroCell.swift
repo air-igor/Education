@@ -37,8 +37,8 @@ class HeroCell: UITableViewCell {
     }
     
     
-    @IBAction func addHero(_ sender: Any) {
-        print("test")
+    @IBAction func addHeroAction(_ sender: Any) {
+        
     }
     
 }

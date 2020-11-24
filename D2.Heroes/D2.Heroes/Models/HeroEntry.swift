@@ -6,6 +6,7 @@
 //  Copyright © 2020 AirIgor. All rights reserved.
 //
 
+
 import RealmSwift
 
 
@@ -14,15 +15,28 @@ import RealmSwift
     dynamic var img: String?
     dynamic var attackType: String?
     dynamic var primaryAttr: String?
-    dynamic var baseHealth: Int?
-    dynamic var baseMana: Int?
-    dynamic var moveSpeed: Int?
-    dynamic var baseStr: Int?
-    dynamic var baseAgi: Int?
-    dynamic var baseInt: Int?
+    dynamic var baseHealth = 0
+    dynamic var baseMana = 0
+    dynamic var moveSpeed = 0
+    dynamic var baseStr = 0
+    dynamic var baseAgi = 0
+    dynamic var baseInt = 0
     dynamic var icon: String?
     
-    convenience init(localizedName: String?, img: String?, attackType: String?, primaryAttr: String?, baseHealth: Int?, baseMana: Int?, moveSpeed: Int?, baseStr: Int?, baseAgi: Int?, baseInt: Int?, icon: String?) {
+    enum CodingKeys: String, CodingKey {
+        case localizedName = "localized_name"
+        case img, icon
+        case attackType = "attack_type"
+        case primaryAttr = "primary_attr"
+        case baseHealth = "base_health"
+        case baseMana = "base_mana"
+        case moveSpeed = "move_speed"
+        case baseStr = "base_str"
+        case baseAgi = "base_agi"
+        case baseInt = "base_int"
+    }
+    
+    convenience init(localizedName: String?, img: String?, attackType: String?, primaryAttr: String?, baseHealth: Int, baseMana: Int, moveSpeed: Int, baseStr: Int, baseAgi: Int, baseInt: Int, icon: String?) {
         self.init()
         self.localizedName = localizedName
         self.img = img
