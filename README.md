@@ -38,3 +38,8 @@
 
 <br>![hippo](https://media.giphy.com/media/ESBLnxuxXGW3H7KTWc/giphy.gif)...![hippo](https://media.giphy.com/media/fUJAJtpSSHvVPsDh89/giphy.gif)
 
+# My App is "D2.Heroes"
+
+
+Функционал представлен в GIF:
+![image alt](https://github.com/air-igor/education/blob/master/D2.Heroes/images/D2.HeroesDemo.gif)
