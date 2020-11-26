@@ -39,7 +39,21 @@
 <br>![hippo](https://media.giphy.com/media/ESBLnxuxXGW3H7KTWc/giphy.gif)...![hippo](https://media.giphy.com/media/fUJAJtpSSHvVPsDh89/giphy.gif)
 
 # My App is "D2.Heroes"
+<br>Приложение на игровую тематику: Dota 2.
+<br>В качестве API был выбран сервис https://api.opendota.com/api/heroStats
 
+<br>Возможности:
+1. Добавление имени своих любимых героев, редактирование и удаление уже имеющихся, а так же их хранение локально.
+2. Открытия списка с героями(аватар героя, его имя, основная его характеристика и тип его атаки).
+3. Детальная информация о каждом герое.
 
-Функционал представлен в GIF:
-![image alt](https://github.com/air-igor/education/blob/master/D2.Heroes/images/D2.HeroesDemo.gif)
+<br>В приложении для хранения данных использовались Core Data(хранение добавленных героев) и Realm(хранение героев полученных с API)
+Для запроса данных из сети использовалась библиотека Alamofire. 
+
+Весь функционал на данный момент представлен в GIF:
+<br>![hippo](https://media.giphy.com/media/15BHWTiPf4AsYwiUFl/giphy.gif)
+
+ToDo?:
+* При отсутствии интернета подгружать героев из БД.
+* Добавление героя в избранное.
+* При создании имени любимого героя выбирать ему аватар.
