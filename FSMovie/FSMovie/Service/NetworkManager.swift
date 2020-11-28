@@ -10,14 +10,13 @@ import Foundation
 
 
 class NetworkManager {
-    func fetchMovieList(searchText: String, completion: @escaping (MovieList?) -> Void) {
+    func fetchMovieList(searchText: String, completion: @escaping ([Result]) -> Void) {
         let mainUrl = ApiKeys.startUrl + ApiKeys.movie + ApiKeys.globalKey + ApiKeys.paramUrl + "query=\(searchText.replacingOccurrences(of: " ", with: "%20"))"
         
         guard let url = URL(string: mainUrl) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
-                completion(nil)
                 print(error.localizedDescription)
                 return
             }
@@ -26,12 +25,11 @@ class NetworkManager {
                 do {
                     let objects = try decoder.decode(MovieList.self, from: data)
                     DispatchQueue.main.async {
-                        completion(objects)
+                        completion(objects.results)
                     }
 
                 } catch let error as NSError {
                     print(error.localizedDescription)
-                    completion(nil)
                 }
             }
         }

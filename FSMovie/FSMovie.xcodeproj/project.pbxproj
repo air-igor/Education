@@ -12,6 +12,8 @@
 		32FA818B2572A5390063F372 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA818A2572A5390063F372 /* UILabel.swift */; };
 		32FA818D2572A6D70063F372 /* MonthsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA818C2572A6D70063F372 /* MonthsList.swift */; };
 		32FA81912572BAF00063F372 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32FA81902572BAF00063F372 /* Assets.xcassets */; };
+		32FA81962572DECC0063F372 /* DetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32FA81952572DECC0063F372 /* DetailCell.xib */; };
+		32FA819A2572E7E00063F372 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA81992572E7E00063F372 /* FavoritesViewController.swift */; };
 		32FC0003257147E000852220 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32FC0001257147E000852220 /* LaunchScreen.storyboard */; };
 		32FC000C25715F6300852220 /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FC000B25715F6300852220 /* MovieList.swift */; };
 		32FC000F25715F7400852220 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FC000E25715F7400852220 /* NetworkManager.swift */; };
@@ -34,6 +36,8 @@
 		32FA818A2572A5390063F372 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		32FA818C2572A6D70063F372 /* MonthsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthsList.swift; sourceTree = "<group>"; };
 		32FA81902572BAF00063F372 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		32FA81952572DECC0063F372 /* DetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCell.xib; sourceTree = "<group>"; };
+		32FA81992572E7E00063F372 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		32FC0002257147E000852220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32FC0004257147E000852220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32FC000B25715F6300852220 /* MovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
@@ -63,6 +67,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32FA81922572D5AC0063F372 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				32FC001D2571651F00852220 /* Extensions */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		32FA81932572DA7B0063F372 /* DetailMovie */ = {
+			isa = PBXGroup;
+			children = (
+				32FC0019257164DE00852220 /* DetailMovieViewController.swift */,
+				32FA81952572DECC0063F372 /* DetailCell.xib */,
+			);
+			path = DetailMovie;
+			sourceTree = "<group>";
+		};
 		32FC000A25715F4700852220 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,8 +105,10 @@
 		32FC001025715F7F00852220 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				32FC001B257164E900852220 /* SearchMovie */,
 				32FC0017257162BE00852220 /* MainTabBarController.swift */,
+				32FC001B257164E900852220 /* SearchMovie */,
+				32FA81932572DA7B0063F372 /* DetailMovie */,
+				32FA81992572E7E00063F372 /* FavoritesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -124,18 +147,8 @@
 			children = (
 				32FCFFFA257147DD00852220 /* SearchMovieViewController.swift */,
 				32FC002825718D9000852220 /* Cell */,
-				32FC001C257164F900852220 /* SearchDetailMovie */,
 			);
 			path = SearchMovie;
-			sourceTree = "<group>";
-		};
-		32FC001C257164F900852220 /* SearchDetailMovie */ = {
-			isa = PBXGroup;
-			children = (
-				32FC0019257164DE00852220 /* DetailMovieViewController.swift */,
-			);
-			name = SearchDetailMovie;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		32FC001D2571651F00852220 /* Extensions */ = {
@@ -177,7 +190,7 @@
 		32FCFFF5257147DD00852220 /* FSMovie */ = {
 			isa = PBXGroup;
 			children = (
-				32FC001D2571651F00852220 /* Extensions */,
+				32FA81922572D5AC0063F372 /* Library */,
 				32FC000A25715F4700852220 /* Models */,
 				32FC000D25715F6700852220 /* Service */,
 				32FC001025715F7F00852220 /* ViewControllers */,
@@ -249,6 +262,7 @@
 				32FC002525718D4C00852220 /* SearchMovieCell.xib in Resources */,
 				32FA81912572BAF00063F372 /* Assets.xcassets in Resources */,
 				32FCFFFE257147DD00852220 /* Main.storyboard in Resources */,
+				32FA81962572DECC0063F372 /* DetailCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +283,7 @@
 				32FC001A257164DE00852220 /* DetailMovieViewController.swift in Sources */,
 				32FC000F25715F7400852220 /* NetworkManager.swift in Sources */,
 				32FA8187257289EF0063F372 /* VoteTextManager.swift in Sources */,
+				32FA819A2572E7E00063F372 /* FavoritesViewController.swift in Sources */,
 				32FA818B2572A5390063F372 /* UILabel.swift in Sources */,
 				32FA818925729E0A0063F372 /* UIView.swift in Sources */,
 				32FC001F2571659800852220 /* UITabBarController.swift in Sources */,

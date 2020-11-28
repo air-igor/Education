@@ -10,6 +10,7 @@ import UIKit
 
 class SearchMovieViewController: UITableViewController {
     
+    var timer: Timer?
     var networkManager = NetworkManager()
     var movies = [Result]()
     
@@ -18,24 +19,6 @@ class SearchMovieViewController: UITableViewController {
         setupTableViewCell()
         setupSearchBar()
         
-        
-    }
-    
-    func setupTableViewCell() {
-        tableView.tableFooterView = UIView()
-        view.backgroundColor = .white
-        tableView.separatorStyle = .none
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
-        let nib = UINib(nibName: "SearchMovieCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: SearchMovieCell.reuseId)
-    }
-    
-    
-    func setupSearchBar() {
-        let searchController = UISearchController(searchResultsController: nil)
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-        searchController.searchBar.delegate = self
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -59,18 +42,51 @@ class SearchMovieViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let selectedMovie = DetailMovieViewController()
+        selectedMovie.detailMovie = movies
+        navigationController?.pushViewController(selectedMovie, animated: true)
+    }
+    
+//    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        let saveAction = UITableViewRowAction(style: .destructive, title: "Save") { (_, _) in
+//
+//        }
+//        saveAction.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1016695205)
+//
+//        return [saveAction]
+//    }
+    
+    func setupTableViewCell() {
+        tableView.tableFooterView = UIView()
+        view.backgroundColor = .white
+        tableView.separatorStyle = .none
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        let nib = UINib(nibName: "SearchMovieCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: SearchMovieCell.reuseId)
+    }
     
     
+    func setupSearchBar() {
+        let searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.delegate = self
+    }
 }
 
 extension SearchMovieViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        networkManager.fetchMovieList(searchText: searchText) { [weak self] (searchResults) in
-            DispatchQueue.main.async {
-                self?.movies = searchResults?.results ?? []
-                self?.tableView.reloadData()
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false, block: { (_) in
+            self.networkManager.fetchMovieList(searchText: searchText) { [weak self] (searchResults) in
+                DispatchQueue.main.async {
+                    self?.movies = searchResults
+                    self?.tableView.reloadData()
+                }
             }
-        }
+        })
     }
     
 }
