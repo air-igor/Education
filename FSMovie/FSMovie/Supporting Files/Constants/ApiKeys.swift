@@ -14,4 +14,6 @@ enum ApiKeys {
     static let movie = "/search/movie?api_key="
     static let globalKey = "990e9ae77435b145536b30e7ba158fca"
     static let paramUrl = "&language=en-US&"
+    static let detailMovie = "/movie/"
+    static let detailKey = "?api_key=990e9ae77435b145536b30e7ba158fca"
 }

@@ -21,6 +21,7 @@ class SearchMovieCell: UITableViewCell {
     @IBOutlet weak var viewCell: UIView!
     @IBOutlet weak var shadowCell: UIView!
     @IBOutlet weak var movieInfo: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func awakeFromNib() {
         super .awakeFromNib()
@@ -49,6 +50,10 @@ class SearchMovieCell: UITableViewCell {
         viewCell.clipsToBounds = true
         shadowCell.backgroundColor = .clear
         shadowCell.addShadow()
+    }
+    
+    func configCell() {
+        activityIndicator.isHidden = true
     }
     
 }

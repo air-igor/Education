@@ -14,6 +14,9 @@ class SearchMovieViewController: UITableViewController {
     var networkManager = NetworkManager()
     var movies = [Result]()
     
+    private lazy var footerView = FooterView()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableViewCell()
@@ -45,26 +48,20 @@ class SearchMovieViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedMovie = DetailMovieViewController()
-        selectedMovie.detailMovie = movies
+        selectedMovie.movieId = movies[indexPath.row].id
         navigationController?.pushViewController(selectedMovie, animated: true)
     }
     
-//    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//        let saveAction = UITableViewRowAction(style: .destructive, title: "Save") { (_, _) in
-//
-//        }
-//        saveAction.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1016695205)
-//
-//        return [saveAction]
-//    }
+    
     
     func setupTableViewCell() {
         tableView.tableFooterView = UIView()
         view.backgroundColor = .white
         tableView.separatorStyle = .none
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         let nib = UINib(nibName: "SearchMovieCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: SearchMovieCell.reuseId)
+        tableView.tableFooterView = footerView
+        
     }
     
     
@@ -78,6 +75,7 @@ class SearchMovieViewController: UITableViewController {
 
 extension SearchMovieViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.footerView.showLoader()
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false, block: { (_) in
             self.networkManager.fetchMovieList(searchText: searchText) { [weak self] (searchResults) in
@@ -87,6 +85,12 @@ extension SearchMovieViewController: UISearchBarDelegate {
                 }
             }
         })
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        movies = []
+        tableView.reloadData()
+        footerView.hideLoader()
     }
     
 }
