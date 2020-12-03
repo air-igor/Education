@@ -34,14 +34,8 @@ class SearchMovieViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchMovieCell.reuseId, for: indexPath) as! SearchMovieCell
-        let movie = movies[indexPath.row]
-        cell.movieInfo.text = movie.overview
-        let imgUrl = "https://image.tmdb.org/t/p/w500" + "\(movie.posterPath ?? "")"
-        cell.posterImg.downloaded(from: imgUrl)
-        cell.voteRank.text = "\(movie.voteAverage)"
-        cell.nameMovie.text = movie.title
-        cell.releaseDate.setCorrectlyDate(movie)
-        cell.voteView.backgroundColor = colorForVote().calculaeteColorVote(movie.voteAverage)
+        cell.configViewCell(movie: movies[indexPath.row])
+        
         return cell
     }
     

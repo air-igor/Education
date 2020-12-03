@@ -15,9 +15,10 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         
         viewControllers = [
+            generateViewController(rootViewController: HomeWindowMoviesController(), image: #imageLiteral(resourceName: "home"), title: "Home"),
             generateViewController(rootViewController: SearchMovieViewController(), image:
                 #imageLiteral(resourceName: "search"), title: "Search"),
-            generateViewController(rootViewController: FavoritesViewController(), image: #imageLiteral(resourceName: "favorites"), title: "Favorites")
+            generateViewController(rootViewController: FavoritesViewController(), image: #imageLiteral(resourceName: "favorites-1"), title: "Favorites")
         ]
     }
     

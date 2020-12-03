@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "A45E0085-8CCC-433F-B31B-499F8F9D96E4"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5106A761-3452-4096-97E2-7159B8DD65A5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FSMovie/Service/MovieRepositoryService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "getDetail(by:onCompletion:onError:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6D5CA273-BDEC-4CB8-AAB5-1A4C78F08171"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FSMovie/ViewControllers/DetailMovie/DetailMovieViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "collectionView(_:numberOfItemsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8FA69F5B-79E1-482A-994C-94FDF47F2DDA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FSMovie/ViewControllers/DetailMovie/CollectionViewCells/CastCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "CastCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "8FA69F5B-79E1-482A-994C-94FDF47F2DDA - 2cdab18a519e88c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FSMovie.CastCell.personName.getter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "FSMovie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorpopov/education/FSMovie/FSMovie/ViewControllers/DetailMovie/CollectionViewCells/CastCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "8FA69F5B-79E1-482A-994C-94FDF47F2DDA - 29054f7781d1c0d9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FSMovie.CastCell.personName.setter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "FSMovie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorpopov/education/FSMovie/FSMovie/ViewControllers/DetailMovie/CollectionViewCells/CastCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "155">
+               </Location>
+               <Location
+                  uuid = "8FA69F5B-79E1-482A-994C-94FDF47F2DDA - 9bf7ed313919dac7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FSMovie.CastCell.personName.modify : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "FSMovie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorpopov/education/FSMovie/FSMovie/ViewControllers/DetailMovie/CollectionViewCells/CastCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  uuid = "8FA69F5B-79E1-482A-994C-94FDF47F2DDA - 79a421a3dfe1d4d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FSMovie.CastCell.personName.modify : Swift.Optional&lt;__C.UILabel&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "FSMovie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorpopov/education/FSMovie/FSMovie/ViewControllers/DetailMovie/CollectionViewCells/CastCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "8FA69F5B-79E1-482A-994C-94FDF47F2DDA - 94ba22df41a7bbcd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FSMovie.CastCell.init(frame: __C.CGRect) -&gt; FSMovie.CastCell"
+                  moduleName = "FSMovie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorpopov/education/FSMovie/FSMovie/ViewControllers/DetailMovie/CollectionViewCells/CastCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "329">
+               </Location>
+               <Location
+                  uuid = "8FA69F5B-79E1-482A-994C-94FDF47F2DDA - e0c80ee346b27d49"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FSMovie.CastCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;FSMovie.CastCell&gt;"
+                  moduleName = "FSMovie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorpopov/education/FSMovie/FSMovie/ViewControllers/DetailMovie/CollectionViewCells/CastCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "258">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D851A8B1-FEA2-427E-9B65-80930CB58608"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FSMovie/ViewControllers/DetailMovie/DetailMovieViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "getCastAndCrewCredits()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D6657A49-1D37-4756-845F-F7BCE9932C1D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FSMovie/ViewControllers/DetailMovie/DetailMovieViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "getCastAndCrewCredits()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2FA9AF56-44D8-4F4E-B768-E50F7FCDC875"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FSMovie/ViewControllers/DetailMovie/DetailMovieViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "collectionView(_:numberOfItemsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

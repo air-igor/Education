@@ -52,7 +52,7 @@ extension UILabel {
         }
     }
     
-    func setCorrectlyDate(_ movie: DetailMovie) {
+    func setCorrectlyDate(_ movie: DetailMovieEntity) {
            guard let dateFilm = movie.releaseDate else { return }
            let filmDate = dateFilm.split(separator: "-")
            if !filmDate.isEmpty {
