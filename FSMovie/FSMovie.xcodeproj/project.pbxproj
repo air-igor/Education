@@ -14,9 +14,12 @@
 		32540BEA2575369D007EB04F /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32540BE92575369D007EB04F /* StorageService.swift */; };
 		32540BEC257538C0007EB04F /* MovieStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32540BEB257538C0007EB04F /* MovieStorageService.swift */; };
 		32540BEE25753999007EB04F /* MovieEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32540BED25753999007EB04F /* MovieEntry.swift */; };
-		3259244F257950B6002863AC /* CastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259244D257950B6002863AC /* CastCell.swift */; };
-		32592450257950B6002863AC /* CastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3259244E257950B6002863AC /* CastCell.xib */; };
+		3259244F257950B6002863AC /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259244D257950B6002863AC /* PersonCell.swift */; };
+		32592450257950B6002863AC /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3259244E257950B6002863AC /* PersonCell.xib */; };
 		3259245225795939002863AC /* CastAndCrew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259245125795939002863AC /* CastAndCrew.swift */; };
+		327D7BC4257AAF0F003CB45A /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D7BC2257AAF0F003CB45A /* PersonDetailViewController.swift */; };
+		327D7BC5257AAF0F003CB45A /* PersonDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327D7BC3257AAF0F003CB45A /* PersonDetailViewController.xib */; };
+		327D7BC7257AB8F5003CB45A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D7BC6257AB8F5003CB45A /* Person.swift */; };
 		32FA8187257289EF0063F372 /* VoteTextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA8186257289EF0063F372 /* VoteTextColor.swift */; };
 		32FA818925729E0A0063F372 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA818825729E0A0063F372 /* UIView.swift */; };
 		32FA818B2572A5390063F372 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA818A2572A5390063F372 /* UILabel.swift */; };
@@ -53,9 +56,12 @@
 		32540BE92575369D007EB04F /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		32540BEB257538C0007EB04F /* MovieStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieStorageService.swift; sourceTree = "<group>"; };
 		32540BED25753999007EB04F /* MovieEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieEntry.swift; sourceTree = "<group>"; };
-		3259244D257950B6002863AC /* CastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCell.swift; sourceTree = "<group>"; };
-		3259244E257950B6002863AC /* CastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CastCell.xib; sourceTree = "<group>"; };
+		3259244D257950B6002863AC /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
+		3259244E257950B6002863AC /* PersonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCell.xib; sourceTree = "<group>"; };
 		3259245125795939002863AC /* CastAndCrew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastAndCrew.swift; sourceTree = "<group>"; };
+		327D7BC2257AAF0F003CB45A /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
+		327D7BC3257AAF0F003CB45A /* PersonDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonDetailViewController.xib; sourceTree = "<group>"; };
+		327D7BC6257AB8F5003CB45A /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		32FA8186257289EF0063F372 /* VoteTextColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteTextColor.swift; sourceTree = "<group>"; };
 		32FA818825729E0A0063F372 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		32FA818A2572A5390063F372 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
@@ -113,6 +119,7 @@
 				32FB53CA2573E0A30004E06C /* DetailMovieEntity.swift */,
 				32FC000B25715F6300852220 /* MovieList.swift */,
 				3259245125795939002863AC /* CastAndCrew.swift */,
+				327D7BC6257AB8F5003CB45A /* Person.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -157,13 +164,22 @@
 			path = FullPicture;
 			sourceTree = "<group>";
 		};
-		3259244C2579507E002863AC /* CollectionViewCells */ = {
+		3259244C2579507E002863AC /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				3259244D257950B6002863AC /* CastCell.swift */,
-				3259244E257950B6002863AC /* CastCell.xib */,
+				3259244D257950B6002863AC /* PersonCell.swift */,
+				3259244E257950B6002863AC /* PersonCell.xib */,
 			);
-			path = CollectionViewCells;
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		327D7BC1257AAECB003CB45A /* PersonDetail */ = {
+			isa = PBXGroup;
+			children = (
+				327D7BC2257AAF0F003CB45A /* PersonDetailViewController.swift */,
+				327D7BC3257AAF0F003CB45A /* PersonDetailViewController.xib */,
+			);
+			path = PersonDetail;
 			sourceTree = "<group>";
 		};
 		32FA81922572D5AC0063F372 /* Library */ = {
@@ -180,7 +196,7 @@
 			children = (
 				32FB53CC25741BBE0004E06C /* DetailMovieViewController.swift */,
 				32FB53CD25741BBE0004E06C /* DetailMovieViewController.xib */,
-				3259244C2579507E002863AC /* CollectionViewCells */,
+				3259244C2579507E002863AC /* CollectionViewCell */,
 			);
 			path = DetailMovie;
 			sourceTree = "<group>";
@@ -223,6 +239,7 @@
 				32FC001B257164E900852220 /* SearchMovie */,
 				32FA81932572DA7B0063F372 /* DetailMovie */,
 				32FA81992572E7E00063F372 /* FavoritesViewController.swift */,
+				327D7BC1257AAECB003CB45A /* PersonDetail */,
 				32540C0E2575AF3B007EB04F /* FullPicture */,
 			);
 			path = ViewControllers;
@@ -389,7 +406,8 @@
 			files = (
 				32FB53CF25741BBE0004E06C /* DetailMovieViewController.xib in Resources */,
 				32FC0003257147E000852220 /* LaunchScreen.storyboard in Resources */,
-				32592450257950B6002863AC /* CastCell.xib in Resources */,
+				32592450257950B6002863AC /* PersonCell.xib in Resources */,
+				327D7BC5257AAF0F003CB45A /* PersonDetailViewController.xib in Resources */,
 				32FC002525718D4C00852220 /* SearchMovieCell.xib in Resources */,
 				32FA81912572BAF00063F372 /* Assets.xcassets in Resources */,
 				32FCFFFE257147DD00852220 /* Main.storyboard in Resources */,
@@ -445,6 +463,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				327D7BC7257AB8F5003CB45A /* Person.swift in Sources */,
 				32FA818D2572A6D70063F372 /* MonthsList.swift in Sources */,
 				32FC002A2571965500852220 /* UIImageView.swift in Sources */,
 				32FCFFFB257147DD00852220 /* SearchMovieViewController.swift in Sources */,
@@ -458,7 +477,7 @@
 				32FB53CE25741BBE0004E06C /* DetailMovieViewController.swift in Sources */,
 				322338852578038900CD61B6 /* HomeMovieList.swift in Sources */,
 				3259245225795939002863AC /* CastAndCrew.swift in Sources */,
-				3259244F257950B6002863AC /* CastCell.swift in Sources */,
+				3259244F257950B6002863AC /* PersonCell.swift in Sources */,
 				32540BEE25753999007EB04F /* MovieEntry.swift in Sources */,
 				3223387D2576CDBB00CD61B6 /* DetailMovieEntry.swift in Sources */,
 				32FB53CB2573E0A30004E06C /* DetailMovieEntity.swift in Sources */,
@@ -468,6 +487,7 @@
 				32FA8187257289EF0063F372 /* VoteTextColor.swift in Sources */,
 				32FA819A2572E7E00063F372 /* FavoritesViewController.swift in Sources */,
 				32FA818B2572A5390063F372 /* UILabel.swift in Sources */,
+				327D7BC4257AAF0F003CB45A /* PersonDetailViewController.swift in Sources */,
 				32FB53D1257445450004E06C /* UIColor.swift in Sources */,
 				32FA818925729E0A0063F372 /* UIView.swift in Sources */,
 				32FC001F2571659800852220 /* UITabBarController.swift in Sources */,

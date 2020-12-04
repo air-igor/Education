@@ -18,7 +18,7 @@ class DetailMovieViewController: UIViewController {
     private let repository = MovieRepositoryService()
     var detailMovie: DetailMovieEntity?
     
-    private let fActivityIndicator = UIActivityIndicatorView(style: .gray)
+    private let fActivityIndicator = UIActivityIndicatorView()
     private var isFavorite = false
     private let favoriteButton = UIButton(type: .custom)
     
@@ -58,11 +58,11 @@ class DetailMovieViewController: UIViewController {
     private func configureCollectionView() {
         castCollectionView.delegate = self
         castCollectionView.dataSource = self
-        let nib = UINib(nibName: "CastCell", bundle: nil)
-        castCollectionView.register(nib, forCellWithReuseIdentifier: CastCell.reuseId)
+        let nib = UINib(nibName: "PersonCell", bundle: nil)
+        castCollectionView.register(nib, forCellWithReuseIdentifier: PersonCell.reuseId)
         crewCollectionView.delegate = self
         crewCollectionView.dataSource = self
-        crewCollectionView.register(nib, forCellWithReuseIdentifier: CastCell.reuseId)
+        crewCollectionView.register(nib, forCellWithReuseIdentifier: PersonCell.reuseId)
         
     }
     
@@ -127,7 +127,7 @@ class DetailMovieViewController: UIViewController {
         movieAvatar.layer.cornerRadius = 10
         let buttonBarButtonItem = UIBarButtonItem(customView: favoriteButton)
         navigationItem.rightBarButtonItem = buttonBarButtonItem
-        favoriteButton.setImage(#imageLiteral(resourceName: "favorites"), for: .normal)
+        favoriteButton.setImage(#imageLiteral(resourceName: "addInFavorites"), for: .normal)
         favoriteButton.addTarget(self, action: #selector(saveMovieTap), for: .touchUpInside)
     }
     
@@ -159,7 +159,7 @@ private extension DetailMovieViewController {
         voteView.layer.cornerRadius = 8
         shadowMovieAvatar.clipsToBounds = true
         shadowMovieAvatar.layer.cornerRadius = 10
-        favoriteButton.setImage(#imageLiteral(resourceName: "favorites"), for: .normal)
+        favoriteButton.setImage(#imageLiteral(resourceName: "addInFavorites"), for: .normal)
         favoriteButton.addTarget(self, action: #selector(saveMovieTap), for: .touchUpInside)
         shadowPoster.addShadow()
         shadowMovieAvatar.addShadow()
@@ -177,12 +177,6 @@ private extension DetailMovieViewController {
     
 }
 
-extension DetailMovieViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
-    
-}
 
 extension DetailMovieViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -197,24 +191,67 @@ extension DetailMovieViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == castCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CastCell.reuseId, for: indexPath) as! CastCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonCell.reuseId, for: indexPath) as! PersonCell
             let castCredits = cast[indexPath.row]
             cell.personName.text = castCredits.name
             let imgUrl = ApiKeys.startImgUrl + "\(castCredits.profilePath ?? "")"
             
+            if castCredits.profilePath == nil {
+                cell.personImage.image = #imageLiteral(resourceName: "noAvatar")
+            } else {
+                cell.personImage.downloaded(from: imgUrl)
+            }
+            cell.characterLbl.text = castCredits.character
+            
+            
             return cell
             
         } else if collectionView == crewCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CastCell.reuseId, for: indexPath) as! CastCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonCell.reuseId, for: indexPath) as! PersonCell
             let crewCredits = crew[indexPath.row]
             cell.personName.text = crewCredits.name
             let imgUrl = ApiKeys.startImgUrl + "\(crewCredits.profilePath ?? "")"
-            cell.personImage.downloaded(from: imgUrl)
+            cell.characterLbl.text = crewCredits.job
+            
+            if crewCredits.profilePath == nil {
+                cell.personImage.image = #imageLiteral(resourceName: "noAvatar")
+            } else {
+                cell.personImage.downloaded(from: imgUrl)
+            }
+            
             return cell
             
         } else {
             return UICollectionViewCell()
         }
+        
     }
     
+}
+
+extension DetailMovieViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == castCollectionView {
+            let personDetailVC = PersonDetailViewController()
+            personDetailVC.personId = cast[indexPath.row].id
+            navigationController?.pushViewController(personDetailVC, animated: true)
+        } else if collectionView == crewCollectionView {
+            let personDetailVC = PersonDetailViewController()
+            personDetailVC.personId = crew[indexPath.row].id
+            navigationController?.pushViewController(personDetailVC, animated: true)
+        }
+    }
+    
+}
+
+extension DetailMovieViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == castCollectionView {
+            return PersonCell.sizeCell
+        } else if collectionView == crewCollectionView {
+            return PersonCell.sizeCell
+        } else {
+            return CGSize(width: 0, height: 0)
+        }
+    }
 }

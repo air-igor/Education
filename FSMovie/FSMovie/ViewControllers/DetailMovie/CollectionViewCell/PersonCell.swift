@@ -10,8 +10,8 @@ import UIKit
 
 class PersonCell: UICollectionViewCell {
 
-    static let reuseId = "CastCell"
-
+    static let reuseId = "PersonCell"
+    static let sizeCell = CGSize(width: 143, height: 78)
     
     @IBOutlet weak var personImage: UIImageView!
     @IBOutlet weak var personName: UILabel!

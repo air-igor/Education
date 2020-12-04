@@ -15,6 +15,10 @@ class PersonDetailViewController: UIViewController {
     
     @IBOutlet weak private var shadowPerson: UIView!
     @IBOutlet weak var personAvatar: UIImageView!
+    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var birthdayLbl: UILabel!
+    @IBOutlet weak var fromLbl: UILabel!
+    @IBOutlet weak var biographyLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +34,34 @@ class PersonDetailViewController: UIViewController {
     }
     
     func updateInterface() {
+        shadowPerson.clipsToBounds = true
         shadowPerson.addShadow()
+        shadowPerson.layer.cornerRadius = 10
         let posterUrl = ApiKeys.imageStartUrl + "\(personInfo?.profilePath ?? "")"
+        personAvatar.clipsToBounds = true
+        personAvatar.layer.cornerRadius = 10
         personAvatar.downloaded(from: posterUrl)
+        nameLbl.text = personInfo?.name
+        biographyLbl.text = personInfo?.biography
+        
+        if personInfo?.profilePath == nil {
+            personAvatar.image = #imageLiteral(resourceName: "personNoAvatar")
+        } else {
+            personAvatar.downloaded(from: posterUrl)
+        }
+        
+        if personInfo?.birthday == nil {
+            birthdayLbl.text = ""
+        } else {
+            birthdayLbl.setCorrectlyDate(personInfo!)
+        }
+        
+        if personInfo?.placeOfBirth == nil {
+            fromLbl.text = ""
+        } else {
+            fromLbl.text = personInfo?.placeOfBirth
+
+        }
     }
     
 }
