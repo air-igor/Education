@@ -135,4 +135,31 @@ class NetworkManager {
         }
         task.resume()
     }
+    
+    func fetchPerson(personId: Int, completion: @escaping (Person?) -> Void) {
+        let mainUrl = ApiKeys.startUrl + ApiKeys.detailPerson + "\(personId)" + ApiKeys.detailKey + ApiKeys.paramUrl
+        guard let url = URL(string: mainUrl) else { return }
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                completion(nil)
+            }
+            if let data = data {
+                let decoder = JSONDecoder()
+                do {
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let objects = try decoder.decode(Person.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(objects)
+                    }
+                    
+                } catch let error as NSError {
+                    print("Decoding error: \(error.localizedDescription)")
+                    completion(nil)
+                }
+            }
+        }
+        task.resume()
+    }
 }
