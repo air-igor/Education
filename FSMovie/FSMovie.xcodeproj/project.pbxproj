@@ -20,6 +20,8 @@
 		327D7BC4257AAF0F003CB45A /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D7BC2257AAF0F003CB45A /* PersonDetailViewController.swift */; };
 		327D7BC5257AAF0F003CB45A /* PersonDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327D7BC3257AAF0F003CB45A /* PersonDetailViewController.xib */; };
 		327D7BC7257AB8F5003CB45A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D7BC6257AB8F5003CB45A /* Person.swift */; };
+		327D7BCA257AEAA7003CB45A /* FullPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D7BC8257AEAA7003CB45A /* FullPictureViewController.swift */; };
+		327D7BCB257AEAA7003CB45A /* FullPictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327D7BC9257AEAA7003CB45A /* FullPictureViewController.xib */; };
 		32FA8187257289EF0063F372 /* VoteTextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA8186257289EF0063F372 /* VoteTextColor.swift */; };
 		32FA818925729E0A0063F372 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA818825729E0A0063F372 /* UIView.swift */; };
 		32FA818B2572A5390063F372 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA818A2572A5390063F372 /* UILabel.swift */; };
@@ -62,6 +64,8 @@
 		327D7BC2257AAF0F003CB45A /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
 		327D7BC3257AAF0F003CB45A /* PersonDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonDetailViewController.xib; sourceTree = "<group>"; };
 		327D7BC6257AB8F5003CB45A /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		327D7BC8257AEAA7003CB45A /* FullPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullPictureViewController.swift; sourceTree = "<group>"; };
+		327D7BC9257AEAA7003CB45A /* FullPictureViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullPictureViewController.xib; sourceTree = "<group>"; };
 		32FA8186257289EF0063F372 /* VoteTextColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteTextColor.swift; sourceTree = "<group>"; };
 		32FA818825729E0A0063F372 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		32FA818A2572A5390063F372 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
@@ -160,6 +164,8 @@
 		32540C0E2575AF3B007EB04F /* FullPicture */ = {
 			isa = PBXGroup;
 			children = (
+				327D7BC8257AEAA7003CB45A /* FullPictureViewController.swift */,
+				327D7BC9257AEAA7003CB45A /* FullPictureViewController.xib */,
 			);
 			path = FullPicture;
 			sourceTree = "<group>";
@@ -408,6 +414,7 @@
 				32FC0003257147E000852220 /* LaunchScreen.storyboard in Resources */,
 				32592450257950B6002863AC /* PersonCell.xib in Resources */,
 				327D7BC5257AAF0F003CB45A /* PersonDetailViewController.xib in Resources */,
+				327D7BCB257AEAA7003CB45A /* FullPictureViewController.xib in Resources */,
 				32FC002525718D4C00852220 /* SearchMovieCell.xib in Resources */,
 				32FA81912572BAF00063F372 /* Assets.xcassets in Resources */,
 				32FCFFFE257147DD00852220 /* Main.storyboard in Resources */,
@@ -487,6 +494,7 @@
 				32FA8187257289EF0063F372 /* VoteTextColor.swift in Sources */,
 				32FA819A2572E7E00063F372 /* FavoritesViewController.swift in Sources */,
 				32FA818B2572A5390063F372 /* UILabel.swift in Sources */,
+				327D7BCA257AEAA7003CB45A /* FullPictureViewController.swift in Sources */,
 				327D7BC4257AAF0F003CB45A /* PersonDetailViewController.swift in Sources */,
 				32FB53D1257445450004E06C /* UIColor.swift in Sources */,
 				32FA818925729E0A0063F372 /* UIView.swift in Sources */,

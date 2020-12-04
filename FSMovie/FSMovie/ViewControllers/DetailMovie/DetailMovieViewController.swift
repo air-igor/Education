@@ -127,8 +127,6 @@ class DetailMovieViewController: UIViewController {
         movieAvatar.layer.cornerRadius = 10
         let buttonBarButtonItem = UIBarButtonItem(customView: favoriteButton)
         navigationItem.rightBarButtonItem = buttonBarButtonItem
-        favoriteButton.setImage(#imageLiteral(resourceName: "addInFavorites"), for: .normal)
-        favoriteButton.addTarget(self, action: #selector(saveMovieTap), for: .touchUpInside)
     }
     
     
@@ -161,6 +159,10 @@ private extension DetailMovieViewController {
         shadowMovieAvatar.layer.cornerRadius = 10
         favoriteButton.setImage(#imageLiteral(resourceName: "addInFavorites"), for: .normal)
         favoriteButton.addTarget(self, action: #selector(saveMovieTap), for: .touchUpInside)
+        let tappedImaged = UITapGestureRecognizer(target: self, action: #selector(tapImage))
+        movieAvatar.addGestureRecognizer(tappedImaged)
+        movieAvatar.isUserInteractionEnabled = true
+        
         shadowPoster.addShadow()
         shadowMovieAvatar.addShadow()
     }
@@ -173,6 +175,13 @@ private extension DetailMovieViewController {
     func configureReleaseView() {
         releaseView.layer.cornerRadius = 8
         releaseView.clipsToBounds = true
+    }
+    
+    @objc func tapImage() {
+        let fullPictureVC = FullPictureViewController()
+        fullPictureVC.fullPicture = detailMovie?.posterPath
+        navigationController?.pushViewController(fullPictureVC, animated: true)
+        
     }
     
 }
