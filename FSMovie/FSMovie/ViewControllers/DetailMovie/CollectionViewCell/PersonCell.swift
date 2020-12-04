@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CastCell: UICollectionViewCell {
+class PersonCell: UICollectionViewCell {
 
     static let reuseId = "CastCell"
 
@@ -16,6 +16,7 @@ class CastCell: UICollectionViewCell {
     @IBOutlet weak var personImage: UIImageView!
     @IBOutlet weak var personName: UILabel!
     @IBOutlet weak var shadowView: UIView!
+    @IBOutlet weak var characterLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,11 +24,6 @@ class CastCell: UICollectionViewCell {
         
     }
 
-    
-     func configCollectionCell(cast: Cast) {
-        personName.text = cast.name
-        let imgUrl = ApiKeys.startImgUrl + "\(cast.profilePath ?? "")"
-    }
     
     func configViewCell() {
         personImage.clipsToBounds = false
