@@ -10,18 +10,21 @@ import UIKit
 
 class FullPictureViewController: UIViewController {
     
-    var fullPicture: String?
+    var fullPicture: String = ""
+
+        
+    @IBOutlet weak private var fullPictureImage: UIImageView!
     
-    @IBOutlet weak var fullPictureImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setFullImage()
     }
     
+    
+    
     func setFullImage() {
-        let imageUrl = ApiKeys.startImgUrl + fullPicture!
+        let imageUrl = ApiKeys.startImgUrl + fullPicture
         fullPictureImage.downloaded(from: imageUrl)
-        print(imageUrl)
     }
     
 }

@@ -13,16 +13,19 @@ class PersonDetailViewController: UIViewController {
     var personId: Int?
     var personInfo: Person?
     
-    @IBOutlet weak private var shadowPerson: UIView!
+    
     @IBOutlet weak var personAvatar: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var birthdayLbl: UILabel!
     @IBOutlet weak var fromLbl: UILabel!
     @IBOutlet weak var biographyLbl: UILabel!
+    @IBOutlet weak var shadowAbout: UIView!
+    @IBOutlet weak var deathLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getPerson()
+        
     }
     
     func getPerson() {
@@ -34,9 +37,8 @@ class PersonDetailViewController: UIViewController {
     }
     
     func updateInterface() {
-        shadowPerson.clipsToBounds = true
-        shadowPerson.addShadow()
-        shadowPerson.layer.cornerRadius = 10
+        shadowAbout.addShadowPerson()
+        shadowAbout.layer.cornerRadius = 10
         let posterUrl = ApiKeys.imageStartUrl + "\(personInfo?.profilePath ?? "")"
         personAvatar.clipsToBounds = true
         personAvatar.layer.cornerRadius = 10
@@ -60,8 +62,18 @@ class PersonDetailViewController: UIViewController {
             fromLbl.text = ""
         } else {
             fromLbl.text = personInfo?.placeOfBirth
-
+            
         }
+        
+        let tappedImaged = UITapGestureRecognizer(target: self, action: #selector(tapImage))
+        personAvatar.addGestureRecognizer(tappedImaged)
+        personAvatar.isUserInteractionEnabled = true
+    }
+    
+    @objc func tapImage() {
+        let fullPictureVC = FullPictureViewController()
+        fullPictureVC.fullPicture = personInfo?.profilePath ?? ""
+        navigationController?.pushViewController(fullPictureVC, animated: true)
     }
     
 }

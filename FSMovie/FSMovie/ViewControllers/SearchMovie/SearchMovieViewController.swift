@@ -68,6 +68,7 @@ class SearchMovieViewController: UITableViewController {
 }
 
 extension SearchMovieViewController: UISearchBarDelegate {
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.footerView.showLoader()
         timer?.invalidate()

@@ -26,4 +26,13 @@ extension UIView {
         self.layer.masksToBounds = false
         
     }
+    
+    func addShadowPerson() {
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowRadius = 1
+        self.layer.shadowOffset = .init(width: 0.5, height: 0.5)
+        self.layer.shadowOpacity = 5.0
+        self.layer.masksToBounds = false
+        
+    }
 }

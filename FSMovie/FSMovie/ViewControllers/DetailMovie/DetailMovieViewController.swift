@@ -11,12 +11,13 @@ import UIKit
 class DetailMovieViewController: UIViewController {
     
     var movieId: Int?
-    let movieStorage = MovieStorageService()
+    private let movieStorage = MovieStorageService()
     private var cast = [Cast]()
     private var crew = [Crew]()
     private let networkManager = NetworkManager()
     private let repository = MovieRepositoryService()
-    var detailMovie: DetailMovieEntity?
+    private var detailMovie: DetailMovieEntity?
+    private var videos = [VideoResult]()
     
     private let fActivityIndicator = UIActivityIndicatorView()
     private var isFavorite = false
@@ -42,6 +43,8 @@ class DetailMovieViewController: UIViewController {
     @IBOutlet weak var posterImage: UIImageView!
     @IBOutlet weak var castCollectionView: UICollectionView!
     @IBOutlet weak var crewCollectionView: UICollectionView!
+    @IBOutlet weak var shadowAboutView: UIView!
+    @IBOutlet weak var videoCollectionView: UICollectionView!
     
     
     
@@ -50,12 +53,14 @@ class DetailMovieViewController: UIViewController {
         configureAppearance()
         gettingDetailInfo()
         configureCollectionView()
-        getCastAndCrewCredits()
-        
         
     }
     
     private func configureCollectionView() {
+        videoCollectionView.delegate = self
+        videoCollectionView.dataSource = self
+        let videoNib = UINib(nibName: "VideoCell", bundle: nil)
+        videoCollectionView.register(videoNib, forCellWithReuseIdentifier: VideoCell.reuseId)
         castCollectionView.delegate = self
         castCollectionView.dataSource = self
         let nib = UINib(nibName: "PersonCell", bundle: nil)
@@ -75,6 +80,18 @@ class DetailMovieViewController: UIViewController {
             }, onError: { [weak self] stringError in
                 print(Error.self)
         })
+        
+        networkManager.fetchVideos(movieId: movieId) { [weak self] videoResult in
+            self?.videos = videoResult
+            self?.videoCollectionView.reloadData()
+        }
+        
+        networkManager.fetchCastAndCrew(movieId: movieId) { [weak self] (CastResults, CrewResults) in
+            self?.cast = CastResults
+            self?.crew = CrewResults
+            self?.castCollectionView.reloadData()
+            self?.crewCollectionView.reloadData()
+        }
         
     }
     
@@ -114,17 +131,18 @@ class DetailMovieViewController: UIViewController {
         } else if detailsMovie.runtime != 0 {
             runtimeLbl.text = "\(detailMovie?.runtime ?? 0) minuts"
         }
-        configView()
+        configImageAndView()
     }
     
     
-    func configView() {
+    func configImageAndView() {
         
         releaseView.layer.cornerRadius = 8
         releaseView.clipsToBounds = true
         voteView.layer.cornerRadius = 8
         movieAvatar.clipsToBounds = true
         movieAvatar.layer.cornerRadius = 10
+        shadowAboutView.addShadow()
         let buttonBarButtonItem = UIBarButtonItem(customView: favoriteButton)
         navigationItem.rightBarButtonItem = buttonBarButtonItem
     }
@@ -135,16 +153,6 @@ class DetailMovieViewController: UIViewController {
         navigationItem.rightBarButtonItem = barButtonItem
         fActivityIndicator.startAnimating()
         
-    }
-    
-    func getCastAndCrewCredits() {
-        guard let movieId = movieId else { return }
-        networkManager.fetchCastAndCrew(movieId: movieId) { [weak self] (CastResults, CrewResults) in
-            self?.cast = CastResults
-            self?.crew = CrewResults
-            self?.castCollectionView.reloadData()
-            self?.crewCollectionView.reloadData()
-        }
     }
     
 }
@@ -160,8 +168,8 @@ private extension DetailMovieViewController {
         favoriteButton.setImage(#imageLiteral(resourceName: "addInFavorites"), for: .normal)
         favoriteButton.addTarget(self, action: #selector(saveMovieTap), for: .touchUpInside)
         let tappedImaged = UITapGestureRecognizer(target: self, action: #selector(tapImage))
-        movieAvatar.addGestureRecognizer(tappedImaged)
-        movieAvatar.isUserInteractionEnabled = true
+        posterImage.addGestureRecognizer(tappedImaged)
+        posterImage.isUserInteractionEnabled = true
         
         shadowPoster.addShadow()
         shadowMovieAvatar.addShadow()
@@ -179,7 +187,7 @@ private extension DetailMovieViewController {
     
     @objc func tapImage() {
         let fullPictureVC = FullPictureViewController()
-        fullPictureVC.fullPicture = detailMovie?.posterPath
+        fullPictureVC.fullPicture = detailMovie?.posterPath ?? ""
         navigationController?.pushViewController(fullPictureVC, animated: true)
         
     }
@@ -193,6 +201,8 @@ extension DetailMovieViewController: UICollectionViewDataSource {
             return cast.count
         } else if collectionView == crewCollectionView {
             return crew.count
+        } else if collectionView == videoCollectionView {
+            return videos.count
         } else {
             return 0
         }
@@ -230,37 +240,51 @@ extension DetailMovieViewController: UICollectionViewDataSource {
             
             return cell
             
-        } else {
-            return UICollectionViewCell()
+        } else if collectionView == videoCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCell.reuseId, for: indexPath) as! VideoCell
+            let videoCredits = videos[indexPath.row]
+            cell.titleLbl.text = videoCredits.name
+            let mainUrl = "https://img.youtube.com/vi/\(videoCredits.key ?? "")/0.jpg"
+            cell.imageTrailer.downloaded(from: mainUrl)
+    
+                return cell
+                
+            } else {
+                
+                return UICollectionViewCell()
+            }
+            
         }
         
     }
     
-}
-
-extension DetailMovieViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == castCollectionView {
-            let personDetailVC = PersonDetailViewController()
-            personDetailVC.personId = cast[indexPath.row].id
-            navigationController?.pushViewController(personDetailVC, animated: true)
-        } else if collectionView == crewCollectionView {
-            let personDetailVC = PersonDetailViewController()
-            personDetailVC.personId = crew[indexPath.row].id
-            navigationController?.pushViewController(personDetailVC, animated: true)
+    extension DetailMovieViewController: UICollectionViewDelegate {
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            
+        // MARK: СДЕЛАТЬ МЕТОД ПЕРЕДАЧИ ССЫЛКИ ВИДЕО И ЗАПУСК ЕГО
+            if collectionView == castCollectionView {
+                let personDetailVC = PersonDetailViewController()
+                personDetailVC.personId = cast[indexPath.row].id
+                navigationController?.pushViewController(personDetailVC, animated: true)
+            } else if collectionView == crewCollectionView {
+                let personDetailVC = PersonDetailViewController()
+                personDetailVC.personId = crew[indexPath.row].id
+                navigationController?.pushViewController(personDetailVC, animated: true)
+            }
         }
+        
     }
     
-}
-
-extension DetailMovieViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == castCollectionView {
-            return PersonCell.sizeCell
-        } else if collectionView == crewCollectionView {
-            return PersonCell.sizeCell
-        } else {
-            return CGSize(width: 0, height: 0)
+    extension DetailMovieViewController: UICollectionViewDelegateFlowLayout {
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            if collectionView == castCollectionView {
+                return PersonCell.sizeCell
+            } else if collectionView == crewCollectionView {
+                return PersonCell.sizeCell
+            } else if collectionView == videoCollectionView {
+                return VideoCell.sizeCell
+            } else {
+                return CGSize(width: 0, height: 0)
+            }
         }
-    }
 }

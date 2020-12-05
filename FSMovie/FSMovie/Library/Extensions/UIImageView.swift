@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Nuke
 
 extension UIImageView {
     func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFill) {
