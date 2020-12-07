@@ -200,12 +200,42 @@ class NetworkManager {
                 fatalError("Couldn't get the video from video id")
             }
             guard let streamUrl = (ytVideo.streamURLs[XCDYouTubeVideoQualityHTTPLiveStreaming] ??
-                ytVideo.streamURLs[XCDYouTubeVideoQuality.HD720.rawValue] ?? ytVideo.streamURLs[XCDYouTubeVideoQuality.medium360.rawValue] ?? ytVideo.streamURLs[XCDYouTubeVideoQuality.small240.rawValue]) else {
+                ytVideo.streamURLs[XCDYouTubeVideoQuality.HD720.rawValue] ??
+                ytVideo.streamURLs[XCDYouTubeVideoQuality.medium360.rawValue] ??
+                ytVideo.streamURLs[XCDYouTubeVideoQuality.small240.rawValue])
+                else {
                     fatalError("Couldn't get URL for this quality")
             }
             DispatchQueue.main.async {
                 completion(streamUrl)                
             }
         }
+    }
+    
+    func fetchPersonImages(personId: Int?, completion: @escaping ([Profile]) -> Void) {
+        guard let personId = personId else { return }
+        
+        let mainUrl = ApiKeys.startUrl + ApiKeys.person + "\(personId)" + ApiKeys.personImages + ApiKeys.detailKey
+        guard let url = URL(string: mainUrl) else { return }
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            if let data = data {
+                let decoder = JSONDecoder()
+                do {
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let objects = try decoder.decode(PersonImage.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(objects.profiles)
+                    }
+                    
+                } catch let error as NSError {
+                    print("Decoding error: \(error.localizedDescription)")
+                }
+            }
+        }
+        task.resume()
     }
 }
