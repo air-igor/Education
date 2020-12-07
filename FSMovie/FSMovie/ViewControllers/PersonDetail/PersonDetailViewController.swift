@@ -9,9 +9,11 @@ import UIKit
 
 class PersonDetailViewController: UIViewController {
     
+    
     var networkManager = NetworkManager()
     var personId: Int?
     var personInfo: Person?
+    var personImages = [Profile]()
     
     
     @IBOutlet weak var personAvatar: UIImageView!
@@ -20,7 +22,7 @@ class PersonDetailViewController: UIViewController {
     @IBOutlet weak var fromLbl: UILabel!
     @IBOutlet weak var biographyLbl: UILabel!
     @IBOutlet weak var shadowAbout: UIView!
-    @IBOutlet weak var deathLbl: UILabel!
+    @IBOutlet weak var personImageCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,19 @@ class PersonDetailViewController: UIViewController {
             self?.personInfo = result
             self?.updateInterface()
         }
+        networkManager.fetchPersonImages(personId: personId) { [weak self] (imagesResult) in
+            self?.personImages = imagesResult
+            self?.personImageCollectionView.reloadData()
+            self?.setupCollectionView()
+        }
+    }
+    
+    func setupCollectionView() {
+        personImageCollectionView.delegate = self
+        personImageCollectionView.dataSource = self
+        let nib = UINib(nibName: "PersonImagesCell", bundle: nil)
+        personImageCollectionView.register(nib, forCellWithReuseIdentifier: PersonImagesCell.reuseId)
+        
     }
     
     func updateInterface() {
@@ -76,4 +91,52 @@ class PersonDetailViewController: UIViewController {
         navigationController?.pushViewController(fullPictureVC, animated: true)
     }
     
+}
+
+extension PersonDetailViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == personImageCollectionView {
+            return personImages.count
+        } else {
+            return 0
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == personImageCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonImagesCell.reuseId, for: indexPath) as! PersonImagesCell
+            let persImg = personImages[indexPath.row]
+            let urlString = ApiKeys.imageStartUrl + "\(persImg.filePath ?? "")"
+            cell.personProfilePath.downloaded(from: urlString)
+            
+            return cell
+        } else {
+            return UICollectionViewCell()
+        }
+    }
+    
+    
+}
+
+extension PersonDetailViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == personImageCollectionView {
+            let fullImageVC = FullPictureViewController()
+            fullImageVC.fullPicture = personImages[indexPath.row].filePath ?? ""
+            navigationController?.pushViewController(fullImageVC, animated: true)
+        }
+    }
+    
+}
+
+
+extension PersonDetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == personImageCollectionView {
+            return PersonImagesCell.sizeCell
+        } else {
+            return CGSize(width: 0, height: 0)
+        }
+    }
 }

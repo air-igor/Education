@@ -247,56 +247,55 @@ extension DetailMovieViewController: UICollectionViewDataSource {
             cell.titleLbl.text = videoCredits.name
             let mainUrl = "https://img.youtube.com/vi/\(videoCredits.key ?? "")/0.jpg"
             cell.imageTrailer.downloaded(from: mainUrl)
-    
-                return cell
-                
-            } else {
-                
-                return UICollectionViewCell()
-            }
             
+            return cell
+            
+        } else {
+            
+            return UICollectionViewCell()
         }
         
     }
     
-    extension DetailMovieViewController: UICollectionViewDelegate {
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            
-        // MARK: СДЕЛАТЬ МЕТОД ПЕРЕДАЧИ ССЫЛКИ ВИДЕО И ЗАПУСК ЕГО
-            if collectionView == castCollectionView {
-                let personDetailVC = PersonDetailViewController()
-                personDetailVC.personId = cast[indexPath.row].id
-                navigationController?.pushViewController(personDetailVC, animated: true)
-            } else if collectionView == crewCollectionView {
-                let personDetailVC = PersonDetailViewController()
-                personDetailVC.personId = crew[indexPath.row].id
-                navigationController?.pushViewController(personDetailVC, animated: true)
-            } else if collectionView == videoCollectionView {
-                networkManager.fetchYoutubeTrailer(key: videos[indexPath.row].key) { [weak self] (videoUrl) in
-                    
-                    let player = AVPlayer(url: videoUrl)
-                    let avVC = AVPlayerViewController()
-                    avVC.player = player
-                    self?.present(avVC, animated: true) {
-                        avVC.player?.play()
-                    }
-                    
+}
+
+extension DetailMovieViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if collectionView == castCollectionView {
+            let personDetailVC = PersonDetailViewController()
+            personDetailVC.personId = cast[indexPath.row].id
+            navigationController?.pushViewController(personDetailVC, animated: true)
+        } else if collectionView == crewCollectionView {
+            let personDetailVC = PersonDetailViewController()
+            personDetailVC.personId = crew[indexPath.row].id
+            navigationController?.pushViewController(personDetailVC, animated: true)
+        } else if collectionView == videoCollectionView {
+            networkManager.fetchYoutubeTrailer(key: videos[indexPath.row].key) { [weak self] (videoUrl) in
+                
+                let player = AVPlayer(url: videoUrl)
+                let avVC = AVPlayerViewController()
+                avVC.player = player
+                self?.present(avVC, animated: true) {
+                    avVC.player?.play()
                 }
+                
             }
         }
-        
     }
     
-    extension DetailMovieViewController: UICollectionViewDelegateFlowLayout {
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            if collectionView == castCollectionView {
-                return PersonCell.sizeCell
-            } else if collectionView == crewCollectionView {
-                return PersonCell.sizeCell
-            } else if collectionView == videoCollectionView {
-                return VideoCell.sizeCell
-            } else {
-                return CGSize(width: 0, height: 0)
-            }
+}
+
+extension DetailMovieViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == castCollectionView {
+            return PersonCell.sizeCell
+        } else if collectionView == crewCollectionView {
+            return PersonCell.sizeCell
+        } else if collectionView == videoCollectionView {
+            return VideoCell.sizeCell
+        } else {
+            return CGSize(width: 0, height: 0)
         }
+    }
 }

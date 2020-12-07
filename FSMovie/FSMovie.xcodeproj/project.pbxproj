@@ -25,6 +25,9 @@
 		327D7BC7257AB8F5003CB45A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D7BC6257AB8F5003CB45A /* Person.swift */; };
 		327D7BCA257AEAA7003CB45A /* FullPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D7BC8257AEAA7003CB45A /* FullPictureViewController.swift */; };
 		327D7BCB257AEAA7003CB45A /* FullPictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327D7BC9257AEAA7003CB45A /* FullPictureViewController.xib */; };
+		32E5B319257EC82800906406 /* PersonImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E5B318257EC82800906406 /* PersonImage.swift */; };
+		32E5B31D257ECDD600906406 /* PersonImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E5B31B257ECDD600906406 /* PersonImagesCell.swift */; };
+		32E5B31E257ECDD600906406 /* PersonImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32E5B31C257ECDD600906406 /* PersonImagesCell.xib */; };
 		32FA8187257289EF0063F372 /* VoteTextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA8186257289EF0063F372 /* VoteTextColor.swift */; };
 		32FA818925729E0A0063F372 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA818825729E0A0063F372 /* UIView.swift */; };
 		32FA818B2572A5390063F372 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA818A2572A5390063F372 /* UILabel.swift */; };
@@ -72,6 +75,9 @@
 		327D7BC6257AB8F5003CB45A /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		327D7BC8257AEAA7003CB45A /* FullPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullPictureViewController.swift; sourceTree = "<group>"; };
 		327D7BC9257AEAA7003CB45A /* FullPictureViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullPictureViewController.xib; sourceTree = "<group>"; };
+		32E5B318257EC82800906406 /* PersonImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonImage.swift; sourceTree = "<group>"; };
+		32E5B31B257ECDD600906406 /* PersonImagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonImagesCell.swift; sourceTree = "<group>"; };
+		32E5B31C257ECDD600906406 /* PersonImagesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonImagesCell.xib; sourceTree = "<group>"; };
 		32FA8186257289EF0063F372 /* VoteTextColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteTextColor.swift; sourceTree = "<group>"; };
 		32FA818825729E0A0063F372 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		32FA818A2572A5390063F372 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
@@ -131,6 +137,7 @@
 				3259245125795939002863AC /* CastAndCrew.swift */,
 				327D7BC6257AB8F5003CB45A /* Person.swift */,
 				3252860D257C262A00C4890D /* Video.swift */,
+				32E5B318257EC82800906406 /* PersonImage.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -201,8 +208,18 @@
 			children = (
 				327D7BC2257AAF0F003CB45A /* PersonDetailViewController.swift */,
 				327D7BC3257AAF0F003CB45A /* PersonDetailViewController.xib */,
+				32E5B31A257ECDB000906406 /* PersonImagesCell */,
 			);
 			path = PersonDetail;
+			sourceTree = "<group>";
+		};
+		32E5B31A257ECDB000906406 /* PersonImagesCell */ = {
+			isa = PBXGroup;
+			children = (
+				32E5B31B257ECDD600906406 /* PersonImagesCell.swift */,
+				32E5B31C257ECDD600906406 /* PersonImagesCell.xib */,
+			);
+			path = PersonImagesCell;
 			sourceTree = "<group>";
 		};
 		32FA81922572D5AC0063F372 /* Library */ = {
@@ -433,6 +450,7 @@
 				32528612257C2CE100C4890D /* VideoCell.xib in Resources */,
 				327D7BC5257AAF0F003CB45A /* PersonDetailViewController.xib in Resources */,
 				327D7BCB257AEAA7003CB45A /* FullPictureViewController.xib in Resources */,
+				32E5B31E257ECDD600906406 /* PersonImagesCell.xib in Resources */,
 				32FC002525718D4C00852220 /* SearchMovieCell.xib in Resources */,
 				32FA81912572BAF00063F372 /* Assets.xcassets in Resources */,
 				32FCFFFE257147DD00852220 /* Main.storyboard in Resources */,
@@ -492,6 +510,7 @@
 				32FA818D2572A6D70063F372 /* MonthsList.swift in Sources */,
 				32FC002A2571965500852220 /* UIImageView.swift in Sources */,
 				32FCFFFB257147DD00852220 /* SearchMovieViewController.swift in Sources */,
+				32E5B319257EC82800906406 /* PersonImage.swift in Sources */,
 				32FCFFF7257147DD00852220 /* AppDelegate.swift in Sources */,
 				32FC002725718D8100852220 /* SearchMovieCell.swift in Sources */,
 				32540BEA2575369D007EB04F /* StorageService.swift in Sources */,
@@ -501,6 +520,7 @@
 				322338822577EE2C00CD61B6 /* HomeWindowMoviesController.swift in Sources */,
 				32FB53CE25741BBE0004E06C /* DetailMovieViewController.swift in Sources */,
 				322338852578038900CD61B6 /* HomeMovieList.swift in Sources */,
+				32E5B31D257ECDD600906406 /* PersonImagesCell.swift in Sources */,
 				3259245225795939002863AC /* CastAndCrew.swift in Sources */,
 				3259244F257950B6002863AC /* PersonCell.swift in Sources */,
 				32540BEE25753999007EB04F /* MovieEntry.swift in Sources */,
