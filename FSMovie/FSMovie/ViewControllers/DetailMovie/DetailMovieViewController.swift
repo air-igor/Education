@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVKit
 
 class DetailMovieViewController: UIViewController {
     
@@ -270,6 +271,17 @@ extension DetailMovieViewController: UICollectionViewDataSource {
                 let personDetailVC = PersonDetailViewController()
                 personDetailVC.personId = crew[indexPath.row].id
                 navigationController?.pushViewController(personDetailVC, animated: true)
+            } else if collectionView == videoCollectionView {
+                networkManager.fetchYoutubeTrailer(key: videos[indexPath.row].key) { [weak self] (videoUrl) in
+                    
+                    let player = AVPlayer(url: videoUrl)
+                    let avVC = AVPlayerViewController()
+                    avVC.player = player
+                    self?.present(avVC, animated: true) {
+                        avVC.player?.play()
+                    }
+                    
+                }
             }
         }
         
