@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+
+struct PersonImage: Decodable  {
+    let id: Int?
+    let profiles: [Profile]
+}
+
+
+struct Profile: Decodable {
+    let filePath: String?
+}
