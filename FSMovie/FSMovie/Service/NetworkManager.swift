@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import XCDYouTubeKit
 
 private let movieStorageService = MovieStorageService()
 
@@ -165,7 +165,7 @@ class NetworkManager {
     
     func fetchVideos(movieId: Int, completion: @escaping ([VideoResult]) -> Void) {
         let mainUrl = ApiKeys.startUrl + ApiKeys.detailMovie + "\(movieId)" + ApiKeys.fetchVideos + ApiKeys.detailKey + ApiKeys.paramUrl
-
+        
         guard let url = URL(string: mainUrl) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { (data, response, error) in
@@ -187,5 +187,25 @@ class NetworkManager {
             }
         }
         task.resume()
+    }
+    
+    func fetchYoutubeTrailer(key: String?, completion: @escaping (URL) -> Void) {
+        guard let key = key else { return }
+        
+        let videoId = "\(key)"
+        let youtubeClient = XCDYouTubeClient.default()
+        
+        youtubeClient.getVideoWithIdentifier(videoId) { video, _ in
+            guard let ytVideo = video else {
+                fatalError("Couldn't get the video from video id")
+            }
+            guard let streamUrl = (ytVideo.streamURLs[XCDYouTubeVideoQualityHTTPLiveStreaming] ??
+                ytVideo.streamURLs[XCDYouTubeVideoQuality.HD720.rawValue] ?? ytVideo.streamURLs[XCDYouTubeVideoQuality.medium360.rawValue] ?? ytVideo.streamURLs[XCDYouTubeVideoQuality.small240.rawValue]) else {
+                    fatalError("Couldn't get URL for this quality")
+            }
+            DispatchQueue.main.async {
+                completion(streamUrl)                
+            }
+        }
     }
 }
