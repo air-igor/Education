@@ -4,19 +4,23 @@ PODS:
   - Realm/Headers (10.1.4)
   - RealmSwift (10.1.4):
     - Realm (= 10.1.4)
+  - XCDYouTubeKit (2.15.1)
 
 DEPENDENCIES:
   - RealmSwift
+  - XCDYouTubeKit
 
 SPEC REPOS:
   trunk:
     - Realm
     - RealmSwift
+    - XCDYouTubeKit
 
 SPEC CHECKSUMS:
   Realm: 80f4fb2971ccb9adc27a47d0955ae8e533a7030b
   RealmSwift: 0e566ca714edb377bba8ea0811eafcea0b93734e
+  XCDYouTubeKit: 5ad334d4657ab920adc5bd6c16f39db8c8ad8d24
 
-PODFILE CHECKSUM: be72029629842594042e79dbb448d33957863722
+PODFILE CHECKSUM: c9070b8c921151388331419fe4c641f651bcb0fb
 
 COCOAPODS: 1.10.0

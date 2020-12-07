@@ -8,5 +8,5 @@ target 'FSMovie' do
   # Pods for FSMovie
 
 pod 'RealmSwift'
-
+pod 'XCDYouTubeKit'
 end
