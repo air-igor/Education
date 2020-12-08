@@ -9,16 +9,26 @@
 import UIKit
 
 class PersonMoviesCell: UITableViewCell {
+    
+    static let reuseId = "PersonMoviesCell"
 
+    @IBOutlet weak var movieRealeseDate: UILabel!
+    @IBOutlet weak var movieName: UILabel!
+    @IBOutlet weak var movieImage: UIImageView!
+    @IBOutlet weak var shadowView: UIView!
+    @IBOutlet weak var voteLbl: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        setupShadowView()
     }
     
+    
+    private func setupShadowView() {
+        shadowView.clipsToBounds = true
+        shadowView.layer.cornerRadius = 5
+        shadowView.addShadowPerson()
+        movieImage.contentMode = .scaleAspectFill
+        movieImage.layer.cornerRadius = 5
+    }
 }
