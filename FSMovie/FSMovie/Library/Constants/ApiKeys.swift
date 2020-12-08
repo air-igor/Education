@@ -24,5 +24,6 @@ enum ApiKeys {
     static let creditsAndKey = "credits?api_key=990e9ae77435b145536b30e7ba158fca&language=en-US"
     static let person = "/person/"
     static let personImages = "/images"
+    static let movieCredits = "/movie_credits"
 
 }
