@@ -20,6 +20,9 @@
 		3259244F257950B6002863AC /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259244D257950B6002863AC /* PersonCell.swift */; };
 		32592450257950B6002863AC /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3259244E257950B6002863AC /* PersonCell.xib */; };
 		3259245225795939002863AC /* CastAndCrew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259245125795939002863AC /* CastAndCrew.swift */; };
+		3272FA25257FE0C000B75286 /* PersonMoviesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272FA23257FE0C000B75286 /* PersonMoviesCell.swift */; };
+		3272FA26257FE0C000B75286 /* PersonMoviesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3272FA24257FE0C000B75286 /* PersonMoviesCell.xib */; };
+		3272FA28257FE44C00B75286 /* CastPersonMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272FA27257FE44C00B75286 /* CastPersonMovies.swift */; };
 		327D7BC4257AAF0F003CB45A /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D7BC2257AAF0F003CB45A /* PersonDetailViewController.swift */; };
 		327D7BC5257AAF0F003CB45A /* PersonDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327D7BC3257AAF0F003CB45A /* PersonDetailViewController.xib */; };
 		327D7BC7257AB8F5003CB45A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D7BC6257AB8F5003CB45A /* Person.swift */; };
@@ -70,6 +73,9 @@
 		3259244D257950B6002863AC /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 		3259244E257950B6002863AC /* PersonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCell.xib; sourceTree = "<group>"; };
 		3259245125795939002863AC /* CastAndCrew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastAndCrew.swift; sourceTree = "<group>"; };
+		3272FA23257FE0C000B75286 /* PersonMoviesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonMoviesCell.swift; sourceTree = "<group>"; };
+		3272FA24257FE0C000B75286 /* PersonMoviesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonMoviesCell.xib; sourceTree = "<group>"; };
+		3272FA27257FE44C00B75286 /* CastPersonMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastPersonMovies.swift; sourceTree = "<group>"; };
 		327D7BC2257AAF0F003CB45A /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
 		327D7BC3257AAF0F003CB45A /* PersonDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonDetailViewController.xib; sourceTree = "<group>"; };
 		327D7BC6257AB8F5003CB45A /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -133,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				32FB53CA2573E0A30004E06C /* DetailMovieEntity.swift */,
+				3272FA27257FE44C00B75286 /* CastPersonMovies.swift */,
 				32FC000B25715F6300852220 /* MovieList.swift */,
 				3259245125795939002863AC /* CastAndCrew.swift */,
 				327D7BC6257AB8F5003CB45A /* Person.swift */,
@@ -203,23 +210,33 @@
 			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
+		3272FA22257FE02E00B75286 /* PersonMoviesTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				3272FA23257FE0C000B75286 /* PersonMoviesCell.swift */,
+				3272FA24257FE0C000B75286 /* PersonMoviesCell.xib */,
+			);
+			path = PersonMoviesTableCell;
+			sourceTree = "<group>";
+		};
 		327D7BC1257AAECB003CB45A /* PersonDetail */ = {
 			isa = PBXGroup;
 			children = (
 				327D7BC2257AAF0F003CB45A /* PersonDetailViewController.swift */,
 				327D7BC3257AAF0F003CB45A /* PersonDetailViewController.xib */,
-				32E5B31A257ECDB000906406 /* PersonImagesCell */,
+				3272FA22257FE02E00B75286 /* PersonMoviesTableCell */,
+				32E5B31A257ECDB000906406 /* PersonImagesCollectionCell */,
 			);
 			path = PersonDetail;
 			sourceTree = "<group>";
 		};
-		32E5B31A257ECDB000906406 /* PersonImagesCell */ = {
+		32E5B31A257ECDB000906406 /* PersonImagesCollectionCell */ = {
 			isa = PBXGroup;
 			children = (
 				32E5B31B257ECDD600906406 /* PersonImagesCell.swift */,
 				32E5B31C257ECDD600906406 /* PersonImagesCell.xib */,
 			);
-			path = PersonImagesCell;
+			path = PersonImagesCollectionCell;
 			sourceTree = "<group>";
 		};
 		32FA81922572D5AC0063F372 /* Library */ = {
@@ -448,6 +465,7 @@
 				32FC0003257147E000852220 /* LaunchScreen.storyboard in Resources */,
 				32592450257950B6002863AC /* PersonCell.xib in Resources */,
 				32528612257C2CE100C4890D /* VideoCell.xib in Resources */,
+				3272FA26257FE0C000B75286 /* PersonMoviesCell.xib in Resources */,
 				327D7BC5257AAF0F003CB45A /* PersonDetailViewController.xib in Resources */,
 				327D7BCB257AEAA7003CB45A /* FullPictureViewController.xib in Resources */,
 				32E5B31E257ECDD600906406 /* PersonImagesCell.xib in Resources */,
@@ -521,6 +539,7 @@
 				32FB53CE25741BBE0004E06C /* DetailMovieViewController.swift in Sources */,
 				322338852578038900CD61B6 /* HomeMovieList.swift in Sources */,
 				32E5B31D257ECDD600906406 /* PersonImagesCell.swift in Sources */,
+				3272FA25257FE0C000B75286 /* PersonMoviesCell.swift in Sources */,
 				3259245225795939002863AC /* CastAndCrew.swift in Sources */,
 				3259244F257950B6002863AC /* PersonCell.swift in Sources */,
 				32540BEE25753999007EB04F /* MovieEntry.swift in Sources */,
@@ -531,6 +550,7 @@
 				32FC000F25715F7400852220 /* NetworkManager.swift in Sources */,
 				32FA8187257289EF0063F372 /* VoteTextColor.swift in Sources */,
 				32FA819A2572E7E00063F372 /* FavoritesViewController.swift in Sources */,
+				3272FA28257FE44C00B75286 /* CastPersonMovies.swift in Sources */,
 				32FA818B2572A5390063F372 /* UILabel.swift in Sources */,
 				327D7BCA257AEAA7003CB45A /* FullPictureViewController.swift in Sources */,
 				327D7BC4257AAF0F003CB45A /* PersonDetailViewController.swift in Sources */,

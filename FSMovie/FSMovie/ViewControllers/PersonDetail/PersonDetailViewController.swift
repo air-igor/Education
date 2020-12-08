@@ -14,7 +14,7 @@ class PersonDetailViewController: UIViewController {
     var personId: Int?
     var personInfo: Person?
     var personImages = [Profile]()
-    
+    var personCastMovies = [PersonCastMovies]()
     
     @IBOutlet weak var personAvatar: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
@@ -23,6 +23,7 @@ class PersonDetailViewController: UIViewController {
     @IBOutlet weak var biographyLbl: UILabel!
     @IBOutlet weak var shadowAbout: UIView!
     @IBOutlet weak var personImageCollectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,7 @@ class PersonDetailViewController: UIViewController {
         
     }
     
-    func getPerson() {
+    private func getPerson() {
         guard let personId = personId else { return }
         networkManager.fetchPerson(personId: personId) { [weak self] (result) in
             self?.personInfo = result
@@ -39,19 +40,28 @@ class PersonDetailViewController: UIViewController {
         networkManager.fetchPersonImages(personId: personId) { [weak self] (imagesResult) in
             self?.personImages = imagesResult
             self?.personImageCollectionView.reloadData()
-            self?.setupCollectionView()
+            self?.setupCollectionAndTableCell()
+        }
+        networkManager.fetchPersonMovies(personId: personId) { [weak self] (castMoviesResult) in
+            self?.personCastMovies = castMoviesResult
+            self?.tableView.reloadData()
+            
         }
     }
     
-    func setupCollectionView() {
+    private func setupCollectionAndTableCell() {
         personImageCollectionView.delegate = self
         personImageCollectionView.dataSource = self
-        let nib = UINib(nibName: "PersonImagesCell", bundle: nil)
-        personImageCollectionView.register(nib, forCellWithReuseIdentifier: PersonImagesCell.reuseId)
+        let collectionNib = UINib(nibName: "PersonImagesCell", bundle: nil)
+        personImageCollectionView.register(collectionNib, forCellWithReuseIdentifier: PersonImagesCell.reuseId)
+        tableView.delegate = self
+        tableView.dataSource = self
+        let tableNib = UINib(nibName: "PersonMoviesCell", bundle: nil)
+        tableView.register(tableNib, forCellReuseIdentifier: PersonMoviesCell.reuseId)
         
     }
     
-    func updateInterface() {
+    private func updateInterface() {
         shadowAbout.addShadowPerson()
         shadowAbout.layer.cornerRadius = 10
         let posterUrl = ApiKeys.imageStartUrl + "\(personInfo?.profilePath ?? "")"
@@ -92,6 +102,46 @@ class PersonDetailViewController: UIViewController {
     }
     
 }
+
+extension PersonDetailViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 65
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return personCastMovies.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: PersonMoviesCell.reuseId, for: indexPath) as! PersonMoviesCell
+        let person = personCastMovies[indexPath.row]
+        cell.movieName.text = person.title
+        let mainImageUrl = ApiKeys.imageStartUrl + "\(person.posterPath ?? "")"
+        cell.movieImage.downloaded(from: mainImageUrl)
+        cell.voteLbl.textColor = UIColor.voteColor(vote: person.voteAverage ?? 0.0)
+        cell.voteLbl.text = "\(person.voteAverage ?? 0.0)"
+        
+        if person.releaseDate == nil {
+            cell.movieRealeseDate.text = ""
+        } else {
+            cell.movieRealeseDate.setCorrectlyDate(person)
+        }
+        
+        return cell
+    }
+    
+}
+
+extension PersonDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedMovie = DetailMovieViewController()
+        selectedMovie.movieId = personCastMovies[indexPath.row].id
+        navigationController?.pushViewController(selectedMovie, animated: true)
+    }
+    
+   }
+
 
 extension PersonDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -140,3 +190,4 @@ extension PersonDetailViewController: UICollectionViewDelegateFlowLayout {
         }
     }
 }
+
