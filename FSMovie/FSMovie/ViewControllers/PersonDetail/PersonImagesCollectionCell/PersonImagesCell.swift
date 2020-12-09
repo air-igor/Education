@@ -12,18 +12,23 @@ class PersonImagesCell: UICollectionViewCell {
     
     static let reuseId = "PersonImagesCell"
     static let sizeCell = CGSize(width: 60, height: 80)
-
-    @IBOutlet weak var personProfilePath: UIImageView!
+    
+    @IBOutlet weak private var personProfilePath: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setupPersonImage()
-
+        
     }
     
-    func setupPersonImage() {
+    private func setupPersonImage() {
         personProfilePath.clipsToBounds = true
         personProfilePath.layer.cornerRadius = 4
     }
-
+    
+    func configPersImgCell(persImg: Profile) {
+        let urlString = ApiKeys.imageStartUrl + "\(persImg.filePath ?? "")"
+        personProfilePath.downloaded(from: urlString)
+    }
+    
 }

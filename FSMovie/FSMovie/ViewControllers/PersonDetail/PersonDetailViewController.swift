@@ -9,21 +9,21 @@ import UIKit
 
 class PersonDetailViewController: UIViewController {
     
-    
-    var networkManager = NetworkManager()
     var personId: Int?
-    var personInfo: Person?
-    var personImages = [Profile]()
-    var personCastMovies = [PersonCastMovies]()
+    private var networkManager = NetworkManager()
+    private var personInfo: Person?
+    private var personImages = [Profile]()
+    private var personCastMovies = [PersonCastMovies]()
     
-    @IBOutlet weak var personAvatar: UIImageView!
-    @IBOutlet weak var nameLbl: UILabel!
-    @IBOutlet weak var birthdayLbl: UILabel!
-    @IBOutlet weak var fromLbl: UILabel!
-    @IBOutlet weak var biographyLbl: UILabel!
-    @IBOutlet weak var shadowAbout: UIView!
-    @IBOutlet weak var personImageCollectionView: UICollectionView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak private var personAvatar: UIImageView!
+    @IBOutlet weak private var nameLbl: UILabel!
+    @IBOutlet weak private var birthdayLbl: UILabel!
+    @IBOutlet weak private var fromLbl: UILabel!
+    @IBOutlet weak private var biographyLbl: UILabel!
+    @IBOutlet weak private var shadowAbout: UIView!
+    @IBOutlet weak private var personImageCollectionView: UICollectionView!
+    @IBOutlet weak private var tableView: UITableView!
+    @IBOutlet weak private var moviesText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +49,7 @@ class PersonDetailViewController: UIViewController {
         }
     }
     
+    
     private func setupCollectionAndTableCell() {
         personImageCollectionView.delegate = self
         personImageCollectionView.dataSource = self
@@ -56,9 +57,9 @@ class PersonDetailViewController: UIViewController {
         personImageCollectionView.register(collectionNib, forCellWithReuseIdentifier: PersonImagesCell.reuseId)
         tableView.delegate = self
         tableView.dataSource = self
+        
         let tableNib = UINib(nibName: "PersonMoviesCell", bundle: nil)
         tableView.register(tableNib, forCellReuseIdentifier: PersonMoviesCell.reuseId)
-        
     }
     
     private func updateInterface() {
@@ -95,7 +96,8 @@ class PersonDetailViewController: UIViewController {
         personAvatar.isUserInteractionEnabled = true
     }
     
-    @objc func tapImage() {
+    
+    @objc private func tapImage() {
         let fullPictureVC = FullPictureViewController()
         fullPictureVC.fullPicture = personInfo?.profilePath ?? ""
         navigationController?.pushViewController(fullPictureVC, animated: true)
@@ -114,21 +116,11 @@ extension PersonDetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PersonMoviesCell.reuseId, for: indexPath) as! PersonMoviesCell
-        let person = personCastMovies[indexPath.row]
-        cell.movieName.text = person.title
-        let mainImageUrl = ApiKeys.imageStartUrl + "\(person.posterPath ?? "")"
-        cell.movieImage.downloaded(from: mainImageUrl)
-        cell.voteLbl.textColor = UIColor.voteColor(vote: person.voteAverage ?? 0.0)
-        cell.voteLbl.text = "\(person.voteAverage ?? 0.0)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: PersonMoviesCell.reuseId, for: indexPath) as? PersonMoviesCell
+        cell?.configCastMoviesCell(person: personCastMovies[indexPath.row])
         
-        if person.releaseDate == nil {
-            cell.movieRealeseDate.text = ""
-        } else {
-            cell.movieRealeseDate.setCorrectlyDate(person)
-        }
         
-        return cell
+        return cell ?? UITableViewCell()
     }
     
 }
@@ -140,7 +132,7 @@ extension PersonDetailViewController: UITableViewDelegate {
         navigationController?.pushViewController(selectedMovie, animated: true)
     }
     
-   }
+}
 
 
 extension PersonDetailViewController: UICollectionViewDataSource {
@@ -156,9 +148,7 @@ extension PersonDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == personImageCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonImagesCell.reuseId, for: indexPath) as! PersonImagesCell
-            let persImg = personImages[indexPath.row]
-            let urlString = ApiKeys.imageStartUrl + "\(persImg.filePath ?? "")"
-            cell.personProfilePath.downloaded(from: urlString)
+            cell.configPersImgCell(persImg: personImages[indexPath.row])
             
             return cell
         } else {

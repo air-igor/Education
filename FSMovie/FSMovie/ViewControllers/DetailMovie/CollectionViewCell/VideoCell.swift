@@ -12,19 +12,25 @@ class VideoCell: UICollectionViewCell {
     
     static let reuseId = "VideoCell"
     static let sizeCell = CGSize(width: 165, height: 119)
-
     
-
-    @IBOutlet weak var imageTrailer: UIImageView!
-    @IBOutlet weak var titleLbl: UILabel!
+    
+    
+    @IBOutlet weak private var imageTrailer: UIImageView!
+    @IBOutlet weak private var titleLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        configCollectionCell()
+        configCollectionView()
     }
     
-    func configCollectionCell() {
+    private func configCollectionView() {
         imageTrailer.layer.cornerRadius = 4
     }
-
+    
+    func configVideoCell(videoCredits: VideoResult) {
+        titleLbl.text = videoCredits.name
+        let mainUrl = "https://img.youtube.com/vi/\(videoCredits.key ?? "")/0.jpg"
+        imageTrailer.downloaded(from: mainUrl)
+    }
+    
 }

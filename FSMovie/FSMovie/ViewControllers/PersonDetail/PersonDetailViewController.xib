@@ -12,6 +12,7 @@
                 <outlet property="biographyLbl" destination="GEt-1g-vGL" id="thm-an-UL2"/>
                 <outlet property="birthdayLbl" destination="MNX-wA-1o1" id="P24-HH-V6c"/>
                 <outlet property="fromLbl" destination="Loe-wR-ox5" id="5h6-3q-8OF"/>
+                <outlet property="moviesText" destination="ORK-8c-CsF" id="hsb-4p-VyE"/>
                 <outlet property="nameLbl" destination="dlN-s1-E43" id="Los-1P-fuE"/>
                 <outlet property="personAvatar" destination="eH3-6H-2CF" id="zSY-RO-Eex"/>
                 <outlet property="personImageCollectionView" destination="f20-ne-atZ" id="8vT-j5-OwG"/>
@@ -85,8 +86,8 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <color key="backgroundColor" red="0.96863394979999995" green="0.96861582989999995" blue="0.96862810850000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </tableView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MOVIES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORK-8c-CsF">
-                            <rect key="frame" x="8" y="430" width="79" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Films in which he starred" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORK-8c-CsF">
+                            <rect key="frame" x="8" y="430" width="265" height="21"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="20"/>
                             <nil key="textColor"/>

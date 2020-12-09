@@ -33,10 +33,10 @@ class HomeWindowMoviesController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchMovieCell.reuseId, for: indexPath) as! SearchMovieCell
-        cell.configViewCell(movie: movies[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: SearchMovieCell.reuseId, for: indexPath) as? SearchMovieCell
+        cell?.configCellInformation(movie: movies[indexPath.row])
         
-        return cell
+        return cell ?? UITableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -46,7 +46,7 @@ class HomeWindowMoviesController: UITableViewController {
         navigationController?.pushViewController(detailVC, animated: true)
     }
     
-    func setupTableViewCell() {
+    private func setupTableViewCell() {
         tableView.tableFooterView = UIView()
         view.backgroundColor = .white
         tableView.separatorStyle = .none
@@ -99,7 +99,7 @@ class HomeWindowMoviesController: UITableViewController {
         
     }
     
-    @objc func getMoviesList() {
+    @objc private func getMoviesList() {
         networkManager.getHomeMovies { [weak self] (homeResults) in
             guard let homeMovies = homeResults else { return }
             self?.movies = homeMovies

@@ -13,15 +13,14 @@ class SearchMovieCell: UITableViewCell {
     
     static let reuseId = "SearchCell"
     
-    @IBOutlet weak var releaseDate: UILabel!
-    @IBOutlet weak var posterImg: UIImageView!
-    @IBOutlet weak var voteRank: UILabel!
-    @IBOutlet weak var nameMovie: UILabel!
-    @IBOutlet weak var voteView: UIView!
-    @IBOutlet weak var viewCell: UIView!
-    @IBOutlet weak var shadowCell: UIView!
-    @IBOutlet weak var movieInfo: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak private var releaseDate: UILabel!
+    @IBOutlet weak private var posterImg: UIImageView!
+    @IBOutlet weak private var voteRank: UILabel!
+    @IBOutlet weak private var nameMovie: UILabel!
+    @IBOutlet weak private var voteView: UIView!
+    @IBOutlet weak private var viewCell: UIView!
+    @IBOutlet weak private var shadowCell: UIView!
+    @IBOutlet weak private var movieInfo: UILabel!
     
     override func awakeFromNib() {
         super .awakeFromNib()
@@ -30,7 +29,7 @@ class SearchMovieCell: UITableViewCell {
         configVoteView()
     }
     
-    func configViewCell(movie: Result) {
+    func configCellInformation(movie: Result) {
         movieInfo.text = movie.overview
         let imgUrl = ApiKeys.startImgUrl + "\(movie.posterPath ?? "")"
         posterImg.downloaded(from: imgUrl)
@@ -60,10 +59,6 @@ class SearchMovieCell: UITableViewCell {
         viewCell.clipsToBounds = true
         shadowCell.backgroundColor = .clear
         shadowCell.addShadow()
-    }
-    
-    func configCell() {
-        activityIndicator.isHidden = true
     }
     
 }

@@ -25,27 +25,25 @@ class DetailMovieViewController: UIViewController {
     private let favoriteButton = UIButton(type: .custom)
     
     
-    @IBOutlet weak var movieAvatar: UIImageView!
-    @IBOutlet weak var titleLbl: UILabel!
-    @IBOutlet weak var voteLbl: UILabel!
-    @IBOutlet weak var releaseDateLbl: UILabel!
-    @IBOutlet weak var taglineLbl: UILabel!
-    @IBOutlet weak var overviewLbl: UILabel!
-    @IBOutlet weak var runtimeLbl: UILabel!
-    @IBOutlet weak var voteView: UIView!
-    @IBOutlet weak var aboutDate: UILabel!
-    @IBOutlet weak var aboutBudget: UILabel!
-    @IBOutlet weak var aboutRevenue: UILabel!
-    @IBOutlet weak var aboutLanguage: UILabel!
-    @IBOutlet weak var releaseView: UIView!
-    @IBOutlet weak var fullImage: UIImageView!
-    @IBOutlet weak var shadowPoster: UIView!
-    @IBOutlet weak var shadowMovieAvatar: UIView!
-    @IBOutlet weak var posterImage: UIImageView!
-    @IBOutlet weak var castCollectionView: UICollectionView!
-    @IBOutlet weak var crewCollectionView: UICollectionView!
-    @IBOutlet weak var shadowAboutView: UIView!
-    @IBOutlet weak var videoCollectionView: UICollectionView!
+    @IBOutlet weak private var movieAvatar: UIImageView!
+    @IBOutlet weak private var titleLbl: UILabel!
+    @IBOutlet weak private var voteLbl: UILabel!
+    @IBOutlet weak private var releaseDateLbl: UILabel!
+    @IBOutlet weak private var overviewLbl: UILabel!
+    @IBOutlet weak private var runtimeLbl: UILabel!
+    @IBOutlet weak private var voteView: UIView!
+    @IBOutlet weak private var aboutDate: UILabel!
+    @IBOutlet weak private var aboutBudget: UILabel!
+    @IBOutlet weak private var aboutRevenue: UILabel!
+    @IBOutlet weak private var aboutLanguage: UILabel!
+    @IBOutlet weak private var releaseView: UIView!
+    @IBOutlet weak private var shadowPoster: UIView!
+    @IBOutlet weak private var shadowMovieAvatar: UIView!
+    @IBOutlet weak private var posterImage: UIImageView!
+    @IBOutlet weak private var castCollectionView: UICollectionView!
+    @IBOutlet weak private var crewCollectionView: UICollectionView!
+    @IBOutlet weak private var shadowAboutView: UIView!
+    @IBOutlet weak private var videoCollectionView: UICollectionView!
     
     
     
@@ -72,7 +70,7 @@ class DetailMovieViewController: UIViewController {
         
     }
     
-    func gettingDetailInfo() {
+    private func gettingDetailInfo() {
         guard let movieId = movieId else { return }
         
         repository.getDetail(by: movieId, onCompletion: { [weak self] results in
@@ -96,7 +94,7 @@ class DetailMovieViewController: UIViewController {
         
     }
     
-    func updateInterface() {
+    private func updateInterface() {
         let movieUrl = ApiKeys.imageStartUrl + "\(detailMovie?.backdropPath ?? "")"
         let posterUrl = ApiKeys.imageStartUrl + "\(detailMovie?.posterPath ?? "")"
         movieAvatar.downloaded(from: movieUrl)
@@ -136,7 +134,7 @@ class DetailMovieViewController: UIViewController {
     }
     
     
-    func configImageAndView() {
+    private func configImageAndView() {
         
         releaseView.layer.cornerRadius = 8
         releaseView.clipsToBounds = true
@@ -149,7 +147,7 @@ class DetailMovieViewController: UIViewController {
     }
     
     
-    @objc func saveMovieTap() {
+    @objc private func saveMovieTap() {
         let barButtonItem = UIBarButtonItem(customView: fActivityIndicator)
         navigationItem.rightBarButtonItem = barButtonItem
         fActivityIndicator.startAnimating()
@@ -160,7 +158,7 @@ class DetailMovieViewController: UIViewController {
 
 private extension DetailMovieViewController {
     
-    func configureAppearance() {
+    private func configureAppearance() {
         configureNavigationBar()
         configureReleaseView()
         voteView.layer.cornerRadius = 8
@@ -176,17 +174,17 @@ private extension DetailMovieViewController {
         shadowMovieAvatar.addShadow()
     }
     
-    func configureNavigationBar() {
+    private func configureNavigationBar() {
         let buttonBarButtonItem = UIBarButtonItem(customView: favoriteButton)
         navigationItem.rightBarButtonItem = buttonBarButtonItem
     }
     
-    func configureReleaseView() {
+    private func configureReleaseView() {
         releaseView.layer.cornerRadius = 8
         releaseView.clipsToBounds = true
     }
     
-    @objc func tapImage() {
+    @objc private func tapImage() {
         let fullPictureVC = FullPictureViewController()
         fullPictureVC.fullPicture = detailMovie?.posterPath ?? ""
         navigationController?.pushViewController(fullPictureVC, animated: true)
@@ -211,44 +209,23 @@ extension DetailMovieViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == castCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonCell.reuseId, for: indexPath) as! PersonCell
-            let castCredits = cast[indexPath.row]
-            cell.personName.text = castCredits.name
-            let imgUrl = ApiKeys.startImgUrl + "\(castCredits.profilePath ?? "")"
-            
-            if castCredits.profilePath == nil {
-                cell.personImage.image = #imageLiteral(resourceName: "noAvatar")
-            } else {
-                cell.personImage.downloaded(from: imgUrl)
-            }
-            cell.characterLbl.text = castCredits.character
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonCell.reuseId, for: indexPath) as? PersonCell
+            cell?.configCastCell(castCredits: cast[indexPath.row])
             
             
-            return cell
+            return cell ?? UICollectionViewCell()
             
         } else if collectionView == crewCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonCell.reuseId, for: indexPath) as! PersonCell
-            let crewCredits = crew[indexPath.row]
-            cell.personName.text = crewCredits.name
-            let imgUrl = ApiKeys.startImgUrl + "\(crewCredits.profilePath ?? "")"
-            cell.characterLbl.text = crewCredits.job
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonCell.reuseId, for: indexPath) as? PersonCell
+            cell?.configCrewCell(crewCredits: crew[indexPath.row])
             
-            if crewCredits.profilePath == nil {
-                cell.personImage.image = #imageLiteral(resourceName: "noAvatar")
-            } else {
-                cell.personImage.downloaded(from: imgUrl)
-            }
-            
-            return cell
+            return cell ?? UICollectionViewCell()
             
         } else if collectionView == videoCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCell.reuseId, for: indexPath) as! VideoCell
-            let videoCredits = videos[indexPath.row]
-            cell.titleLbl.text = videoCredits.name
-            let mainUrl = "https://img.youtube.com/vi/\(videoCredits.key ?? "")/0.jpg"
-            cell.imageTrailer.downloaded(from: mainUrl)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCell.reuseId, for: indexPath) as? VideoCell
+            cell?.configVideoCell(videoCredits: videos[indexPath.row])
             
-            return cell
+            return cell ?? UICollectionViewCell()
             
         } else {
             
