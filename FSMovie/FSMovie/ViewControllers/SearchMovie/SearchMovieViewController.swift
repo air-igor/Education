@@ -10,9 +10,9 @@ import UIKit
 
 class SearchMovieViewController: UITableViewController {
     
-    var timer: Timer?
-    var networkManager = NetworkManager()
-    var movies = [Result]()
+    private var timer: Timer?
+    private var networkManager = NetworkManager()
+    private var movies = [Result]()
     
     private lazy var footerView = FooterView()
     
@@ -48,7 +48,7 @@ class SearchMovieViewController: UITableViewController {
     
     
     
-    func setupTableViewCell() {
+    private func setupTableViewCell() {
         tableView.tableFooterView = UIView()
         view.backgroundColor = .white
         tableView.separatorStyle = .none
@@ -59,7 +59,7 @@ class SearchMovieViewController: UITableViewController {
     }
     
     
-    func setupSearchBar() {
+    private func setupSearchBar() {
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
