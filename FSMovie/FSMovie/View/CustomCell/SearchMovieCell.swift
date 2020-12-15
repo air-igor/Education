@@ -11,7 +11,6 @@ import UIKit
 
 class SearchMovieCell: UITableViewCell {
     
-    static let reuseId = "SearchCell"
     
     @IBOutlet weak private var releaseDate: UILabel!
     @IBOutlet weak private var posterImg: UIImageView!

@@ -10,7 +10,6 @@ import UIKit
 
 class VideoCell: UICollectionViewCell {
     
-    static let reuseId = "VideoCell"
     static let sizeCell = CGSize(width: 165, height: 119)
     
     

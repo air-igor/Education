@@ -33,7 +33,7 @@ class HomeWindowMoviesController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchMovieCell.reuseId, for: indexPath) as? SearchMovieCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchMovieCell", for: indexPath) as? SearchMovieCell
         cell?.configCellInformation(movie: movies[indexPath.row])
         
         return cell ?? UITableViewCell()
@@ -50,8 +50,7 @@ class HomeWindowMoviesController: UITableViewController {
         tableView.tableFooterView = UIView()
         view.backgroundColor = .white
         tableView.separatorStyle = .none
-        let nib = UINib(nibName: "SearchMovieCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: SearchMovieCell.reuseId)
+        tableView.registerCell(type: SearchMovieCell.self)
         tableView.tableFooterView = footerView
         
         let querys = ["Popular", "Upcoming", "Top Rated", "Now Playing"]

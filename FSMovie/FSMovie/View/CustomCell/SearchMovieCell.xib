@@ -15,18 +15,22 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0CC-UV-IP3" userLabel="ShadowCell">
-                        <rect key="frame" x="9" y="10" width="395" height="199"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0CC-UV-IP3" userLabel="ShadowCell">
+                        <rect key="frame" x="9" y="11" width="396" height="198"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="elE-LI-ESx" userLabel="ViewCell">
-                                <rect key="frame" x="0.0" y="0.0" width="395" height="199"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elE-LI-ESx" userLabel="ViewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="396" height="198"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RhA-Xh-WIX">
-                                        <rect key="frame" x="1" y="1" width="128" height="197"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RhA-Xh-WIX">
+                                        <rect key="frame" x="1" y="1" width="128" height="196"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" text="Movie Info" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oza-6k-X2Z">
+                                        <rect key="frame" x="137" y="79" width="257" height="118"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name Movie" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="PIA-8f-XMI">
                                         <rect key="frame" x="137" y="10" width="210" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -35,19 +39,18 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2019, October 05" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gY9-vx-iYW">
-                                        <rect key="frame" x="137" y="53" width="218" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <rect key="frame" x="137" y="53" width="210" height="19"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.3086472602739726" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RPD-Yh-8IN">
-                                        <rect key="frame" x="355" y="1" width="38" height="38"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RPD-Yh-8IN">
+                                        <rect key="frame" x="356" y="1" width="38" height="38"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Zf-5F-HQH">
                                                 <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Bold" family="Bodoni 72" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -55,20 +58,35 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Movie Info" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oza-6k-X2Z">
-                                        <rect key="frame" x="137" y="79" width="258" height="119"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="RPD-Yh-8IN" secondAttribute="trailing" constant="2" id="5rD-bG-Jmm"/>
+                                    <constraint firstItem="RPD-Yh-8IN" firstAttribute="top" secondItem="elE-LI-ESx" secondAttribute="top" constant="1" id="Ov9-YF-VC4"/>
+                                    <constraint firstItem="RPD-Yh-8IN" firstAttribute="height" secondItem="elE-LI-ESx" secondAttribute="height" multiplier="0.191919" id="YBr-Oi-8XR"/>
+                                    <constraint firstItem="RPD-Yh-8IN" firstAttribute="width" secondItem="elE-LI-ESx" secondAttribute="width" multiplier="0.0959596" id="uuy-MA-ufl"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="elE-LI-ESx" secondAttribute="trailing" id="66f-2Z-n8K"/>
+                            <constraint firstItem="RhA-Xh-WIX" firstAttribute="leading" secondItem="0CC-UV-IP3" secondAttribute="leading" constant="1" id="Bxz-mY-nbm"/>
+                            <constraint firstItem="elE-LI-ESx" firstAttribute="leading" secondItem="0CC-UV-IP3" secondAttribute="leading" id="CI9-hi-Uey"/>
+                            <constraint firstItem="RhA-Xh-WIX" firstAttribute="width" secondItem="0CC-UV-IP3" secondAttribute="width" multiplier="0.323232" id="K90-zS-DE9"/>
+                            <constraint firstAttribute="bottom" secondItem="RhA-Xh-WIX" secondAttribute="bottom" constant="1" id="N8R-US-8De"/>
+                            <constraint firstItem="RhA-Xh-WIX" firstAttribute="top" secondItem="0CC-UV-IP3" secondAttribute="top" constant="1" id="U4q-yx-Q6s"/>
+                            <constraint firstAttribute="bottom" secondItem="elE-LI-ESx" secondAttribute="bottom" id="XdL-PO-jS7"/>
+                            <constraint firstItem="elE-LI-ESx" firstAttribute="top" secondItem="0CC-UV-IP3" secondAttribute="top" id="rTN-4i-yOp"/>
+                        </constraints>
                     </view>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="0CC-UV-IP3" secondAttribute="trailing" constant="9" id="Lgu-0b-ibn"/>
+                    <constraint firstItem="0CC-UV-IP3" firstAttribute="leading" secondItem="63u-ZF-1VP" secondAttribute="leading" constant="9" id="PGF-LL-ciz"/>
+                    <constraint firstItem="0CC-UV-IP3" firstAttribute="top" secondItem="63u-ZF-1VP" secondAttribute="top" constant="11" id="RTR-td-IWj"/>
+                    <constraint firstAttribute="bottom" secondItem="0CC-UV-IP3" secondAttribute="bottom" constant="11" id="sRb-DS-Jx9"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="movieInfo" destination="Oza-6k-X2Z" id="JY1-5T-nEs"/>

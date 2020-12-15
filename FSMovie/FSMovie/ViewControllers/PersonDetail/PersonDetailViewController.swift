@@ -53,13 +53,10 @@ class PersonDetailViewController: UIViewController {
     private func setupCollectionAndTableCell() {
         personImageCollectionView.delegate = self
         personImageCollectionView.dataSource = self
-        let collectionNib = UINib(nibName: "PersonImagesCell", bundle: nil)
-        personImageCollectionView.register(collectionNib, forCellWithReuseIdentifier: PersonImagesCell.reuseId)
+        personImageCollectionView.registerCell(type: PersonImagesCell.self)
         tableView.delegate = self
         tableView.dataSource = self
-        
-        let tableNib = UINib(nibName: "PersonMoviesCell", bundle: nil)
-        tableView.register(tableNib, forCellReuseIdentifier: PersonMoviesCell.reuseId)
+        tableView.registerCell(type: PersonMoviesCell.self)
     }
     
     private func updateInterface() {
@@ -73,7 +70,7 @@ class PersonDetailViewController: UIViewController {
         biographyLbl.text = personInfo?.biography
         
         if personInfo?.profilePath == nil {
-            personAvatar.image = #imageLiteral(resourceName: "personNoAvatar")
+            personAvatar.image = UIImage(named: "personNoAvatar")
         } else {
             personAvatar.downloaded(from: posterUrl)
         }
@@ -107,16 +104,16 @@ class PersonDetailViewController: UIViewController {
 
 extension PersonDetailViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 65
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+////        return 65
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return personCastMovies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PersonMoviesCell.reuseId, for: indexPath) as? PersonMoviesCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PersonMoviesCell", for: indexPath) as? PersonMoviesCell
         cell?.configCastMoviesCell(person: personCastMovies[indexPath.row])
         
         
@@ -147,10 +144,10 @@ extension PersonDetailViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == personImageCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonImagesCell.reuseId, for: indexPath) as! PersonImagesCell
-            cell.configPersImgCell(persImg: personImages[indexPath.row])
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PersonImagesCell", for: indexPath) as? PersonImagesCell
+            cell?.configPersImgCell(persImg: personImages[indexPath.row])
             
-            return cell
+            return cell ?? UICollectionViewCell()
         } else {
             return UICollectionViewCell()
         }

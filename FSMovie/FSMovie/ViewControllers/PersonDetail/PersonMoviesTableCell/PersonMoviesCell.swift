@@ -10,7 +10,6 @@ import UIKit
 
 class PersonMoviesCell: UITableViewCell {
     
-    static let reuseId = "PersonMoviesCell"
     
     @IBOutlet weak var movieRealeseDate: UILabel!
     @IBOutlet weak var movieName: UILabel!

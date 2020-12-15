@@ -15,9 +15,9 @@ struct colorForVote {
         case 0..<4:
             return .red
         case 4..<5.9:
-            return .init(cgColor: #colorLiteral(red: 1, green: 0.7785236239, blue: 0.2993813753, alpha: 1))
+            return .init(red: 255/255, green: 199/255, blue: 76/255, alpha: 1)
         case 5.9...10:
-            return .init(cgColor: #colorLiteral(red: 0.356010139, green: 0.7930163741, blue: 0.2730439305, alpha: 0.8024400685))
+            return .init(red: 91/255, green: 202/255, blue: 70/255, alpha: 1)
         default:
             break
         }

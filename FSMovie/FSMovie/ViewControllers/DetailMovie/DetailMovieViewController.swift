@@ -58,16 +58,13 @@ class DetailMovieViewController: UIViewController {
     private func configureCollectionView() {
         videoCollectionView.delegate = self
         videoCollectionView.dataSource = self
-        let videoNib = UINib(nibName: "VideoCell", bundle: nil)
-        videoCollectionView.register(videoNib, forCellWithReuseIdentifier: VideoCell.reuseId)
+        videoCollectionView.registerCell(type: VideoCell.self)
         castCollectionView.delegate = self
         castCollectionView.dataSource = self
-        let nib = UINib(nibName: "PersonCell", bundle: nil)
-        castCollectionView.register(nib, forCellWithReuseIdentifier: PersonCell.reuseId)
+        castCollectionView.registerCell(type: PersonCell.self)
         crewCollectionView.delegate = self
         crewCollectionView.dataSource = self
-        crewCollectionView.register(nib, forCellWithReuseIdentifier: PersonCell.reuseId)
-        
+        crewCollectionView.registerCell(type: PersonCell.self)
     }
     
     private func gettingDetailInfo() {
@@ -164,7 +161,7 @@ private extension DetailMovieViewController {
         voteView.layer.cornerRadius = 8
         shadowMovieAvatar.clipsToBounds = true
         shadowMovieAvatar.layer.cornerRadius = 10
-        favoriteButton.setImage(#imageLiteral(resourceName: "addInFavorites"), for: .normal)
+        favoriteButton.setImage(UIImage(named: "addInFavorites"), for: .normal)
         favoriteButton.addTarget(self, action: #selector(saveMovieTap), for: .touchUpInside)
         let tappedImaged = UITapGestureRecognizer(target: self, action: #selector(tapImage))
         posterImage.addGestureRecognizer(tappedImaged)
@@ -209,20 +206,20 @@ extension DetailMovieViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == castCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonCell.reuseId, for: indexPath) as? PersonCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PersonCell", for: indexPath) as? PersonCell
             cell?.configCastCell(castCredits: cast[indexPath.row])
             
             
             return cell ?? UICollectionViewCell()
             
         } else if collectionView == crewCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonCell.reuseId, for: indexPath) as? PersonCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PersonCell", for: indexPath) as? PersonCell
             cell?.configCrewCell(crewCredits: crew[indexPath.row])
             
             return cell ?? UICollectionViewCell()
             
         } else if collectionView == videoCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCell.reuseId, for: indexPath) as? VideoCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCell", for: indexPath) as? VideoCell
             cell?.configVideoCell(videoCredits: videos[indexPath.row])
             
             return cell ?? UICollectionViewCell()

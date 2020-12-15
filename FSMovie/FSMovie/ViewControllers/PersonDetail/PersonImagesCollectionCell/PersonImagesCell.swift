@@ -10,7 +10,6 @@ import UIKit
 
 class PersonImagesCell: UICollectionViewCell {
     
-    static let reuseId = "PersonImagesCell"
     static let sizeCell = CGSize(width: 60, height: 80)
     
     @IBOutlet weak private var personProfilePath: UIImageView!

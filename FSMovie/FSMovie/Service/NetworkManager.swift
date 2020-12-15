@@ -12,7 +12,14 @@ import XCDYouTubeKit
 private let movieStorageService = MovieStorageService()
 
 class NetworkManager {
+    
+    // MARK: Properties
+    
     var homeList: HomeMovieList = .popular
+    private let session = URLSession(configuration: .default)
+    private var dataTask: URLSessionDataTask?
+    
+    // MARK: Methods
     
     func getHomeMovies(completion: @escaping ([Result]?) -> Void) {
         var mainHomeUrl: URL?
@@ -28,8 +35,7 @@ class NetworkManager {
         }
         
         guard let url = mainHomeUrl else { return }
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { (data, response, error) in
+        dataTask = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print(error.localizedDescription)
                 return
@@ -48,7 +54,7 @@ class NetworkManager {
                 }
             }
         }
-        task.resume()
+        dataTask?.resume()
     }
     
     
@@ -60,8 +66,7 @@ class NetworkManager {
         let mainUrl = ApiKeys.startUrl + ApiKeys.movie + ApiKeys.globalKey + ApiKeys.paramUrl + "query=\(searchText.replacingOccurrences(of: " ", with: "%20"))"
         
         guard let url = URL(string: mainUrl) else { return }
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { (data, response, error) in
+        dataTask = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print(error.localizedDescription)
                 return
@@ -80,7 +85,7 @@ class NetworkManager {
                 }
             }
         }
-        task.resume()
+        dataTask?.resume()
     }
     
     func fetchDetailMovie(movieId: Int,
@@ -88,8 +93,7 @@ class NetworkManager {
                           onError: @escaping (Error) -> Void) {
         let mainUrl = ApiKeys.startUrl + ApiKeys.detailMovie + "\(movieId)" + ApiKeys.detailKey + ApiKeys.paramUrl
         guard let url = URL(string: mainUrl) else { return }
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { (data, response, error) in
+        dataTask = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 onError(error)
                 return
@@ -107,14 +111,13 @@ class NetworkManager {
                 }
             }
         }
-        task.resume()
+        dataTask?.resume()
     }
     
     func fetchCastAndCrew(movieId: Int, completion: @escaping ([Cast], [Crew]) -> Void) {
         let mainUrl = ApiKeys.startUrl + ApiKeys.detailMovie + "\(movieId)/" + ApiKeys.creditsAndKey
         guard let url = URL(string: mainUrl) else { return }
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { (data, response, error) in
+        dataTask = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print(error.localizedDescription)
                 return
@@ -133,14 +136,13 @@ class NetworkManager {
                 }
             }
         }
-        task.resume()
+        dataTask?.resume()
     }
     
     func fetchPerson(personId: Int, completion: @escaping (Person?) -> Void) {
         let mainUrl = ApiKeys.startUrl + ApiKeys.detailPerson + "\(personId)" + ApiKeys.detailKey + ApiKeys.paramUrl
         guard let url = URL(string: mainUrl) else { return }
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { (data, response, error) in
+        dataTask = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print(error.localizedDescription)
                 completion(nil)
@@ -160,15 +162,14 @@ class NetworkManager {
                 }
             }
         }
-        task.resume()
+        dataTask?.resume()
     }
     
     func fetchVideos(movieId: Int, completion: @escaping ([VideoResult]) -> Void) {
         let mainUrl = ApiKeys.startUrl + ApiKeys.detailMovie + "\(movieId)" + ApiKeys.fetchVideos + ApiKeys.detailKey + ApiKeys.paramUrl
         
         guard let url = URL(string: mainUrl) else { return }
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { (data, response, error) in
+        dataTask = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print(error.localizedDescription)
             }
@@ -186,7 +187,7 @@ class NetworkManager {
                 }
             }
         }
-        task.resume()
+        dataTask?.resume()
     }
     
     func fetchYoutubeTrailer(key: String?, completion: @escaping (URL) -> Void) {
@@ -217,8 +218,7 @@ class NetworkManager {
         
         let mainUrl = ApiKeys.startUrl + ApiKeys.person + "\(personId)" + ApiKeys.personImages + ApiKeys.detailKey
         guard let url = URL(string: mainUrl) else { return }
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { (data, response, error) in
+        dataTask = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print(error.localizedDescription)
             }
@@ -236,7 +236,7 @@ class NetworkManager {
                 }
             }
         }
-        task.resume()
+        dataTask?.resume()
     }
     
     func fetchPersonMovies(personId: Int?, completion: @escaping ([PersonCastMovies]) -> Void) {
@@ -246,11 +246,10 @@ class NetworkManager {
         let mainUrl = ApiKeys.startUrl + ApiKeys.person + "\(personId)" + ApiKeys.movieCredits + ApiKeys.detailKey + ApiKeys.paramUrl
         
         guard let url = URL(string: mainUrl) else { return }
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { (data, response, error) in
+        dataTask = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print(error.localizedDescription)
-
+                
             }
             if let data = data {
                 let decoder = JSONDecoder()
@@ -266,7 +265,7 @@ class NetworkManager {
                 }
             }
         }
-        task.resume()
+        dataTask?.resume()
     }
     
 }

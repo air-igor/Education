@@ -10,7 +10,6 @@ import UIKit
 
 class PersonCell: UICollectionViewCell {
     
-    static let reuseId = "PersonCell"
     static let sizeCell = CGSize(width: 143, height: 78)
     
     @IBOutlet weak private var personImage: UIImageView!
@@ -37,7 +36,7 @@ class PersonCell: UICollectionViewCell {
         characterLbl.text = crewCredits.job
         
         if crewCredits.profilePath == nil {
-            personImage.image = #imageLiteral(resourceName: "noAvatar")
+            personImage.image = UIImage(named: "noAvatar")
         } else {
             personImage.downloaded(from: imgUrl)
         }
@@ -49,7 +48,7 @@ class PersonCell: UICollectionViewCell {
         let imgUrl = ApiKeys.startImgUrl + "\(castCredits.profilePath ?? "")"
         
         if castCredits.profilePath == nil {
-            personImage.image = #imageLiteral(resourceName: "noAvatar")
+            personImage.image = UIImage(named: "noAvatar")
         } else {
             personImage.downloaded(from: imgUrl)
         }

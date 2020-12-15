@@ -11,10 +11,6 @@ import RealmSwift
 
 class MovieStorageService: StorageService {
 
-//    func save(detailMovie: DetailMovie?) {
-//        let movieObject = MovieEntry(backdropPath: detailMovie?.backdropPath, posterPath: detailMovie?.posterPath, overview: detailMovie?.overview, voteAverage: detailMovie?.voteAverage, id: detailMovie?.id, releaseDate: detailMovie?.releaseDate, title: detailMovie?.title)
-//        saveObject(object: movieObject)
-//    }
     
     func getDetailEntry(by movieId: Int, onCompletion: @escaping (DetailMovieEntry) -> Void, onError: ((String) -> Void)? = nil) {
         let results = realm?.objects(DetailMovieEntry.self)
