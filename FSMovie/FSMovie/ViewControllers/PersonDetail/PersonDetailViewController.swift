@@ -104,10 +104,6 @@ class PersonDetailViewController: UIViewController {
 
 extension PersonDetailViewController: UITableViewDataSource {
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-////        return 65
-//    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return personCastMovies.count
     }
