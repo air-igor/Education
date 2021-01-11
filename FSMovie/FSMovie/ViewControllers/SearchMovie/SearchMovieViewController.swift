@@ -24,10 +24,6 @@ class SearchMovieViewController: UITableViewController {
         
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        243
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
     }
@@ -82,6 +78,7 @@ extension SearchMovieViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
         movies = []
         tableView.reloadData()
         footerView.hideLoader()
