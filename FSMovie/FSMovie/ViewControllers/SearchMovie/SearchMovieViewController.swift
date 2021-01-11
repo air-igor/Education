@@ -35,6 +35,18 @@ class SearchMovieViewController: UITableViewController {
         return cell ?? UITableViewCell()
     }
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = "Please enter search term above..."
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        return label
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return movies.count > 0 ? 0 : 250
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedMovie = DetailMovieViewController()
@@ -64,6 +76,7 @@ class SearchMovieViewController: UITableViewController {
 
 extension SearchMovieViewController: UISearchBarDelegate {
     
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.footerView.showLoader()
         timer?.invalidate()
@@ -74,14 +87,25 @@ extension SearchMovieViewController: UISearchBarDelegate {
                     self?.tableView.reloadData()
                 }
             }
+            searchBar.placeholder = searchText
+
         })
     }
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.placeholder = ""
+        if searchBar.placeholder == "" {
+            movies = []
+            footerView.hideLoader()
+            tableView.reloadData()
+        }
+        
+    }
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = nil
+        searchBar.placeholder = ""
         movies = []
         tableView.reloadData()
         footerView.hideLoader()
     }
-    
 }
