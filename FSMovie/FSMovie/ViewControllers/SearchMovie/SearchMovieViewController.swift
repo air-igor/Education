@@ -10,6 +10,7 @@ import UIKit
 
 class SearchMovieViewController: UITableViewController {
     
+    private var text = ""
     private var timer: Timer?
     private var networkManager = NetworkManager()
     private var movies = [Result]()
@@ -76,34 +77,42 @@ class SearchMovieViewController: UITableViewController {
 
 extension SearchMovieViewController: UISearchBarDelegate {
     
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.text = self.text
+        return true
+    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.footerView.showLoader()
         timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false, block: { (_) in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
             self.networkManager.fetchMovieList(searchText: searchText) { [weak self] (searchResults) in
                 DispatchQueue.main.async {
                     self?.movies = searchResults
                     self?.tableView.reloadData()
                 }
             }
-            searchBar.placeholder = searchText
+            if let text = searchBar.text {
+                searchBar.placeholder = text
+                self.text = text
+                self.footerView.hideLoader()
+            }
+            if searchText == "" {
+                self.movies = []
+                self.tableView.reloadData()
+            }
 
         })
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.placeholder = ""
-        if searchBar.placeholder == "" {
-            movies = []
-            footerView.hideLoader()
-            tableView.reloadData()
-        }
-        
-    }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.placeholder = ""
+        if let text = searchBar.text {
+            searchBar.placeholder = text
+            self.text = ""
+            searchBar.placeholder = ""
+        }
+        
         movies = []
         tableView.reloadData()
         footerView.hideLoader()
