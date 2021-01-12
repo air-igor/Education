@@ -18,8 +18,12 @@ class FullPictureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setFullImage()
+        self.tabBarController?.tabBar.isHidden = true
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
     
     
     func setFullImage() {
