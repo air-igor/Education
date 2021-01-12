@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,44 +13,71 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="398" height="65"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MJy-ro-KRD" userLabel="shadow view">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJy-ro-KRD" userLabel="shadow view">
                         <rect key="frame" x="20" y="8" width="364" height="49"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yEb-Xn-jCO">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yEb-Xn-jCO">
                                 <rect key="frame" x="0.0" y="-4" width="37" height="57"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="5EN-jo-bsG"/>
+                                    <constraint firstAttribute="width" constant="37" id="hOP-Uh-Tx5"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Movie name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyy-CN-Dw4">
-                                <rect key="frame" x="45" y="1" width="268" height="21"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hyy-CN-Dw4">
+                                <rect key="frame" x="45" y="1" width="283" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="mSS-tT-CN1"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="October 02, 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jJ-fz-S9i">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="October 02, 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jJ-fz-S9i">
                                 <rect key="frame" x="45" y="30" width="268" height="14"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="cLd-CV-bbT"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Copperplate-Light" family="Copperplate" pointSize="17"/>
                                 <color key="textColor" white="0.0" alpha="0.61681292808219179" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ah7-Bw-P5o">
-                                <rect key="frame" x="321" y="16" width="38" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ah7-Bw-P5o">
+                                <rect key="frame" x="330" y="16" width="26" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="26" id="Byd-V2-uSM"/>
+                                    <constraint firstAttribute="height" constant="17" id="zk8-Kh-Bwy"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="yEb-Xn-jCO" firstAttribute="top" secondItem="MJy-ro-KRD" secondAttribute="top" constant="-4" id="4sL-OX-OLM"/>
+                            <constraint firstAttribute="bottom" secondItem="6jJ-fz-S9i" secondAttribute="bottom" constant="5" id="6Ic-WP-PnL"/>
+                            <constraint firstAttribute="bottom" secondItem="yEb-Xn-jCO" secondAttribute="bottom" constant="-4" id="EB8-Qg-JfF"/>
+                            <constraint firstAttribute="trailing" secondItem="6jJ-fz-S9i" secondAttribute="trailing" constant="51" id="HsS-1e-hvP"/>
+                            <constraint firstItem="hyy-CN-Dw4" firstAttribute="leading" secondItem="yEb-Xn-jCO" secondAttribute="trailing" constant="8" id="IiG-mi-9lW"/>
+                            <constraint firstItem="hyy-CN-Dw4" firstAttribute="top" secondItem="MJy-ro-KRD" secondAttribute="top" constant="1" id="JUV-5W-dPo"/>
+                            <constraint firstItem="Ah7-Bw-P5o" firstAttribute="leading" secondItem="hyy-CN-Dw4" secondAttribute="trailing" constant="2" id="R9h-gn-Vtl"/>
+                            <constraint firstItem="6jJ-fz-S9i" firstAttribute="leading" secondItem="yEb-Xn-jCO" secondAttribute="trailing" constant="8" id="Rpn-R8-paC"/>
+                            <constraint firstItem="Ah7-Bw-P5o" firstAttribute="top" secondItem="MJy-ro-KRD" secondAttribute="top" constant="16" id="SBS-NV-wan"/>
+                            <constraint firstAttribute="trailing" secondItem="Ah7-Bw-P5o" secondAttribute="trailing" constant="8" id="eJM-rb-iNX"/>
+                            <constraint firstItem="yEb-Xn-jCO" firstAttribute="leading" secondItem="MJy-ro-KRD" secondAttribute="leading" id="lV1-Oh-Znc"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" red="0.96863394979999995" green="0.96861582989999995" blue="0.96862810850000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="MJy-ro-KRD" secondAttribute="trailing" constant="14" id="Cvq-Ob-Nu5"/>
+                    <constraint firstItem="MJy-ro-KRD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="KQm-9p-HaL"/>
+                    <constraint firstItem="MJy-ro-KRD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="XjN-A4-G3N"/>
+                    <constraint firstAttribute="bottom" secondItem="MJy-ro-KRD" secondAttribute="bottom" constant="8" id="YQ6-Lt-pB1"/>
+                </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="movieImage" destination="yEb-Xn-jCO" id="kjS-eO-Hwc"/>
                 <outlet property="movieName" destination="hyy-CN-Dw4" id="Cia-gV-Ajy"/>
