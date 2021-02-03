@@ -74,7 +74,7 @@ class DetailMovieViewController: UIViewController {
             self?.detailMovie = results
             self?.updateInterface()
             }, onError: { [weak self] stringError in
-                print(Error.self)
+                print(Error.self, stringError)
         })
         
         networkManager.fetchVideos(movieId: movieId) { [weak self] videoResult in

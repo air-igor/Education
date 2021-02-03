@@ -45,7 +45,7 @@ final class MovieRepositoryService {
                 }
             }
         case .firstStorage:
-            // СДЕЛАТЬ САМОМУ
+            // 
             break
         }
     }

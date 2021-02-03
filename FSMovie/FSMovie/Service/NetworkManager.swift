@@ -46,7 +46,6 @@ class NetworkManager {
                     let objects = try decoder.decode(MovieList.self, from: data)
                     DispatchQueue.main.async {
                         completion(objects.results)
-                        
                     }
                     
                 } catch let error as NSError {
