@@ -71,5 +71,5 @@ ToDo?:
 4. Подробный информация человека(актера или съемочной группы) с описанием, фото из реальной жизни, а так же список в каких проектах он учавствовал.
 5. Вся информация берется с TMDB API: https://developers.themoviedb.org/3/getting-started/introduction
 
-Весь функционал на данный момент представлен в GIF:
-![alt text](https://github.com/air-igor/education/blob/master/preview/FSMovie.gif)
+<br>Весь функционал на данный момент представлен в GIF:
+<br>![alt text](https://github.com/air-igor/education/blob/master/preview/FSMovie.gif)
